@@ -1,5 +1,5 @@
 import React, {Component, FormEvent} from 'react'
-import { Input, Button } from 'antd';
+import { Input, Button, Badge } from 'antd';
 interface IHelloProps {
   message?: string,
   count?: number
@@ -34,14 +34,17 @@ class Hello extends Component<IHelloProps, IHelloState> {
   }
   render() {
     return (
-      <div>
-        <h1 style={{color:'#fff'}}>{this.state.message}...  click: {this.state.count}</h1>
-        <div style={{display: "flex"}}>
+      <article>
+        <h1 className="color-white">{this.state.message}...</h1>
+        <Badge showZero count={this.state.count}>
+          <h2 className="color-white">clickCount..</h2>
+        </Badge>
+        <aside style={{display: "flex"}}>
           <Button type="primary" danger onClick={() => {this.handleButtonClick(false)}}>-</Button>
           <Input type="text" onChange={this.handleChange}/>
           <Button type="primary" onClick={() => {this.handleButtonClick(true)}}>+</Button>
-        </div>
-      </div>
+        </aside>
+      </article>
     )
   }
 }
