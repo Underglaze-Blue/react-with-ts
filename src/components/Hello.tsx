@@ -37,11 +37,11 @@ class Hello extends Component<IHelloProps, IHelloState> {
       <article>
         <h1 className="color-white">{this.state.message}...</h1>
         <Badge showZero count={this.state.count}>
-          <h2 className="color-white">clickCount..</h2>
+          <h2 className="color-white">Button click count..</h2>
         </Badge>
         <aside style={{display: "flex"}}>
-          <Button type="primary" danger onClick={() => {this.handleButtonClick(false)}}>-</Button>
-          <Input type="text" onChange={this.handleChange}/>
+          <Button disabled={this.state.count <= 0} type="primary" danger onClick={() => {this.handleButtonClick(false)}}>-</Button>
+          <Input placeholder="React demo ..." allowClear maxLength={10} type="text" onChange={this.handleChange}/>
           <Button type="primary" onClick={() => {this.handleButtonClick(true)}}>+</Button>
         </aside>
       </article>
