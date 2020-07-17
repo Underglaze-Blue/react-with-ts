@@ -1,5 +1,8 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## 计划
+![xmind](/readme/xmind.png)
+
 ## Available Scripts
 
 In the project directory, you can run:
