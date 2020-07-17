@@ -35,13 +35,13 @@ class Hello extends Component<IHelloProps, IHelloState> {
   render() {
     return (
       <article>
-        <h1 className="color-white">{this.state.message}...</h1>
+        <h1 className="color-white">{this.state.message}{this.state.count >= 10 && '🐂🍺'}...</h1>
         <Badge showZero count={this.state.count}>
           <h2 className="color-white">Button click count..</h2>
         </Badge>
         <aside style={{display: "flex"}}>
           <Button disabled={this.state.count <= 0} type="primary" danger onClick={() => {this.handleButtonClick(false)}}>-</Button>
-          <Input placeholder="React demo ..." allowClear maxLength={10} type="text" onChange={this.handleChange}/>
+          <Input value={this.state.message} placeholder="React demo ..." allowClear maxLength={10} type="text" onChange={this.handleChange}/>
           <Button type="primary" onClick={() => {this.handleButtonClick(true)}}>+</Button>
         </aside>
       </article>
