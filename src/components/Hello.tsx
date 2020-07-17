@@ -19,7 +19,7 @@ class Hello extends Component<IHelloProps, IHelloState> {
     }
   }
   static defaultProps = {
-    message: 'test',
+    message: 'defaultMessage',
     count: 0
   }
   handleChange = (e: FormEvent<HTMLInputElement>) => {
