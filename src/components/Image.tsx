@@ -1,24 +1,35 @@
 import React , {Component} from 'react'
+import connect from "../store/connect";
 
 interface IImagesProps {
-  list: Array<object>
+  list?: Array<string>
 }
 interface IImagesState {
-  list: Array<object>
+  list: Array<string>
 }
 
 class ImageList extends Component<IImagesProps, IImagesState> {
   constructor(props: IImagesProps) {
     super(props);
     this.state = {
-      list: []
+      list: (this.props as IImagesState).list
     }
+  }
+  static defaultProps = {
+    list: []
+  }
+  renderImg(item: string) {
+    // https://api.ixiaowai.cn/api/api.php
+    // https://img.xjh.me/random_img.php?type=bg&ctype=nature&return=302
+    return <li key={item}><img src="https://img.xjh.me/random_img.php?type=bg&ctype=nature&return=302" /></li>
   }
   render() {
     return (
-      <div>
-        <img/>
-      </div>
+      <ul>
+        {this.state.list.map(item => {return this.renderImg(item)})}
+      </ul>
     )
   }
 }
+
+export default (ImageList)

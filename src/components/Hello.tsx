@@ -1,5 +1,6 @@
 import React, {Component, FormEvent} from 'react'
 import { Input, Button, Badge } from 'antd';
+import connect from "../store/connect";
 interface IHelloProps {
   message?: string,
   count?: number
@@ -49,5 +50,4 @@ class Hello extends Component<IHelloProps, IHelloState> {
   }
 }
 
-
-export default Hello
+export default connect(Hello)
