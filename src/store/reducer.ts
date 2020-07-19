@@ -1,14 +1,17 @@
-import * as interfaceType from './interface'
+import {CHANGE_COUNT} from './actionTypes';
 
-const defaultState: interfaceType.IStoreState={
+interface ITodoState {
+  list: Array<string>
+}
+
+const defaultState: ITodoState = {
   list: []
 }
-const reducer=(state= defaultState,action: any)=>{
-  switch (action.type) {
-    case 'list':
-      return action.list
-    default:
-      return state.list
+
+export default (state: ITodoState = defaultState, action: any) => {
+  if (action.type === CHANGE_COUNT) {
+    state.list = action.list;
+    return state;
   }
+  return state;
 }
-export default reducer;
