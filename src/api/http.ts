@@ -11,14 +11,12 @@ const axios: Pick<InstanceType, "get" | "post"> = {
       data
     });
   },
-  post: function (url, data = {}, config = {}) {
-    return request(
-      Object.assign({}, config, {
-        method: 'POST',
-        url: url,
-        data: data
-      })
-    );
+  post: function (url, data = {}) {
+    return request({
+      url,
+      method: 'post',
+      data
+    });
   },
 };
 
