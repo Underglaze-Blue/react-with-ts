@@ -4,6 +4,7 @@ import { PlusOutlined, MinusOutlined } from '@ant-design/icons'
 import styled from 'styled-components'
 import Gallery from './gallery'
 import { ImageUrl } from '../models'
+import {fetchRandomImage} from '../api'
 
 const StyledButton = styled(Button)`
   margin: 0 16px;
@@ -40,6 +41,7 @@ class Hello extends Component<IHelloProps, IHelloState> {
   }
   handleButtonClick = (type: boolean | null) => {
     const { count, imageItems } = this.state
+    console.log(fetchRandomImage())
     type ? imageItems.push('https://img.xjh.me/random_img.php?type=bg&ctype=nature&return=302') : imageItems.pop()
     this.setState({
       count: type ? count + 1 : count - 1,
