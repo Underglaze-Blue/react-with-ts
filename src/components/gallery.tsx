@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import { Card } from 'antd'
 import styled from 'styled-components'
 import { ImageUrl } from '../models'
@@ -30,6 +31,11 @@ interface IGalleryState {
   items: ImageUrl[]
 }
 
+const mapStateToProps = (state: ImageUrl[]) => {
+  return {
+    items: state
+  }
+}
 
 class Gallery extends Component<IGalleryProps, IGalleryState> {
   constructor(props: IGalleryProps) {
@@ -52,7 +58,8 @@ class Gallery extends Component<IGalleryProps, IGalleryState> {
   }
 
   render(): React.ReactElement {
-    const { items } = this.state
+    console.log(this.props)
+    const { items } = this.props
     return (
       <GalleryContainer>
         {this._onRenderCard(items)}
@@ -61,4 +68,4 @@ class Gallery extends Component<IGalleryProps, IGalleryState> {
   }
 }
 
-export default Gallery
+export default connect(mapStateToProps)(Gallery)

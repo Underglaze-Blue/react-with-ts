@@ -1,14 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {Provider} from "react-redux";
-import store from './store'
+import { imageStore } from './store/image-reducer'
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   <React.Fragment>
-    <Provider store={store}>
+    <Provider store={imageStore}>
       <App />
     </Provider>
   </React.Fragment>,
