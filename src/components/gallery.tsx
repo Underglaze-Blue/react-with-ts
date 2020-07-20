@@ -6,6 +6,8 @@ import { ImageUrl } from '../models'
 
 const GalleryContainer = styled.div`
   display: flex;
+  width: 95vw;
+  flex-wrap: wrap;
 `
 const StyledCard = styled(Card)`
   width: 240px;
@@ -17,8 +19,9 @@ const StyledCard = styled(Card)`
   }
 `
 const Image = styled.img`
-  width: 100%;
-  height: 100%;
+  width: calc(240px - 24px);
+  height: calc(180px - 24px);
+  object-fit: contain
 `
 
 interface IGalleryProps {
@@ -58,7 +61,6 @@ class Gallery extends Component<IGalleryProps, IGalleryState> {
   }
 
   render(): React.ReactElement {
-    console.log(this.props)
     const { items } = this.props
     return (
       <GalleryContainer>

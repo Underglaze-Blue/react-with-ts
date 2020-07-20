@@ -3,6 +3,8 @@ import { Input, Button, Badge } from 'antd'
 import { PlusOutlined, MinusOutlined } from '@ant-design/icons'
 import styled from 'styled-components'
 import { AddImage, RemoveImage } from '../store/image-reducer'
+import {fetchRandomImage} from '../api'
+import {ImageResult} from '../models'
 
 const StyledButton = styled(Button)`
   margin: 0 16px;
@@ -40,6 +42,10 @@ class Hello extends Component<IHelloProps, IHelloState> {
     this.setState({
       count: type ? count + 1 : count - 1
     })
+    type ? fetchRandomImage().then(res => {
+      const {img} = res as ImageResult
+      AddImage(img)
+    }) : RemoveImage()
   }
   render() {
     return (
@@ -51,14 +57,12 @@ class Hello extends Component<IHelloProps, IHelloState> {
         <aside style={{display: "flex"}}>
           <StyledButton type="primary" danger disabled={this.state.count <= 0} onClick={() => {
             this.handleButtonClick(false)
-            RemoveImage()
           }}>
             <MinusOutlined />
           </StyledButton>
           <Input value={this.state.message} placeholder="React demo ..." allowClear maxLength={10} type="text" onChange={this.handleChange}/>
-          <StyledButton type="primary" onClick={() => {
+          <StyledButton disabled={this.state.count >= 9} type="primary" onClick={() => {
             this.handleButtonClick(true)
-            AddImage('https://img.xjh.me/random_img.php?type=bg&ctype=nature&return=302')
           }}>
             <PlusOutlined />
           </StyledButton>

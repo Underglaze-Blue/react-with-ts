@@ -7,7 +7,7 @@ export interface ImageOperationAction {
   data?: ImageUrl
 }
 
-const defaultState: ImageUrl[] = ['https://img.xjh.me/random_img.php?type=bg&ctype=nature&return=302']
+const defaultState: ImageUrl[] = []
 
 export const imageStore = createStore((state: ImageUrl[] = defaultState, action: ImageOperationAction): ImageUrl[] => {
   switch (action.type) {
@@ -17,7 +17,7 @@ export const imageStore = createStore((state: ImageUrl[] = defaultState, action:
     case IMAGE_OPERATION.REMOVE :
       state.pop()
       break
-    default : 
+    default :
       return state
   }
   return state.concat([])
