@@ -1,8 +1,8 @@
-import React from 'react';
-import logo from './logo.svg';
-import Hello from "./components/Hello";
-import ImageList from "./components/Image";
-import './App.css';
+import React from 'react'
+import logo from './logo.svg'
+import Hello from "./components/Hello"
+import Gallery from "./components/gallery"
+import './App.css'
 
 function App() {
   return (
@@ -14,7 +14,7 @@ function App() {
         <Hello message="React"/>
       </section>
       <main>
-        <ImageList/>
+        <Gallery />
       </main>
     </div>
   );
