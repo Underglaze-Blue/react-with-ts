@@ -1,12 +1,22 @@
 import React, {Component, FormEvent} from 'react'
-import { Input, Button, Badge } from 'antd';
+import { Input, Button, Badge } from 'antd'
+import { PlusOutlined, MinusOutlined } from '@ant-design/icons'
+import styled from 'styled-components'
+import Gallery from './gallery'
+import { ImageUrl } from '../models'
+
+const StyledButton = styled(Button)`
+  margin: 0 16px;
+`
+
 interface IHelloProps {
-  message?: string,
+  message?: string
   count?: number
 }
 
 interface IHelloState {
-  message: string | undefined,
+  imageItems: ImageUrl[]
+  message: string | undefined
   count: number
 }
 
@@ -15,7 +25,8 @@ class Hello extends Component<IHelloProps, IHelloState> {
     super(props)
     this.state = {
       message: props.message,
-      count: props.count as number
+      count: props.count as number,
+      imageItems: ['https://img.xjh.me/random_img.php?type=bg&ctype=nature&return=302']
     }
   }
   static defaultProps = {
@@ -28,11 +39,15 @@ class Hello extends Component<IHelloProps, IHelloState> {
     })
   }
   handleButtonClick = (type: boolean | null) => {
+    const { count, imageItems } = this.state
+    type ? imageItems.push('https://img.xjh.me/random_img.php?type=bg&ctype=nature&return=302') : imageItems.pop()
     this.setState({
-      count: type ? this.state.count + 1 : this.state.count - 1
+      count: type ? count + 1 : count - 1,
+      imageItems
     })
   }
   render() {
+    const { imageItems } = this.state
     return (
       <article>
         <h1 className="color-white">{this.state.message}{this.state.count >= 10 && '🐂🍺'}...</h1>
@@ -40,10 +55,17 @@ class Hello extends Component<IHelloProps, IHelloState> {
           <h2 className="color-white">Button click count..</h2>
         </Badge>
         <aside style={{display: "flex"}}>
-          <Button disabled={this.state.count <= 0} type="primary" danger onClick={() => {this.handleButtonClick(false)}}>-</Button>
+          <StyledButton type="primary" danger disabled={this.state.count <= 0} onClick={() => {this.handleButtonClick(false)}}>
+            <MinusOutlined />
+          </StyledButton>
           <Input value={this.state.message} placeholder="React demo ..." allowClear maxLength={10} type="text" onChange={this.handleChange}/>
-          <Button type="primary" onClick={() => {this.handleButtonClick(true)}}>+</Button>
+          <StyledButton type="primary" onClick={() => {this.handleButtonClick(true)}}>
+            <PlusOutlined />
+          </StyledButton>
         </aside>
+        <div>
+          <Gallery items={imageItems}/>
+        </div>
       </article>
     )
   }
