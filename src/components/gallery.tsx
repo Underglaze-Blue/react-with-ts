@@ -104,7 +104,7 @@ class Gallery extends Component<IGalleryProps, IGalleryState> {
         <Modal
           title="Show Image"
           visible={this.state.visible}
-          width="85vw"
+          width="75vw"
           closable={false}
           centered
           footer={[
