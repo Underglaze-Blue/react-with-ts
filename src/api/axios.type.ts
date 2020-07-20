@@ -6,7 +6,7 @@ export interface BaseResponse<T> {
   message?: string;
 }
 
-export interface Axios {
+export interface InstanceType {
   request?<T = any>(config: AxiosRequestConfig): Promise<BaseResponse<T>>
 
   get?<T = any>(url: string, data?: any): Promise<BaseResponse<T>>
