@@ -3,7 +3,7 @@ import request from "./axios.config";
 import {InstanceType} from "./axios.type";
 
 // Ajax 实体
-const instance: InstanceType = {
+const axios: Pick<InstanceType, "get" | "post"> = {
   get: function (url, data) {
     return request({
       url,
@@ -22,4 +22,4 @@ const instance: InstanceType = {
   },
 };
 
-export default instance;
+export default axios;

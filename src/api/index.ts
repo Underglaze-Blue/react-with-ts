@@ -1,6 +1,5 @@
-import instance from './http'
-import { ImageUrl } from '../models'
+import axios from './http'
 
 export const fetchRandomImage =  () => {
-  return instance.get('/random_img.php?type=bg&ctype=nature&return=json')
+  return axios.get('/random_img.php?type=bg&ctype=nature&return=json')
 }
