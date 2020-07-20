@@ -4,21 +4,19 @@ import {InstanceType} from "./axios.type";
 
 // Ajax 实体
 const instance: InstanceType = {
-  get: function (url, data) {
+  get: function (url, params = {}) {
     return request({
       url,
       method: 'get',
-      data
+      params
     });
   },
-  post: function (url, data = {}, config = {}) {
-    return request(
-      Object.assign({}, config, {
-        method: 'POST',
-        url: url,
-        data: data
-      })
-    );
+  post: function (url, data = {}) {
+    return request({
+      url,
+      method: 'post',
+      data
+    });
   },
 };
 
