@@ -17,7 +17,8 @@ interface IHelloProps {
 
 interface IHelloState {
   message: string | undefined
-  count: number
+  count: number,
+  loading: boolean
 }
 
 class Hello extends Component<IHelloProps, IHelloState> {
@@ -25,7 +26,8 @@ class Hello extends Component<IHelloProps, IHelloState> {
     super(props)
     this.state = {
       message: props.message,
-      count: props.count as number
+      count: props.count as number,
+      loading: false
     }
   }
   static defaultProps = {
@@ -42,10 +44,21 @@ class Hello extends Component<IHelloProps, IHelloState> {
     this.setState({
       count: type ? count + 1 : count - 1
     })
-    type ? fetchRandomImage().then(res => {
-      const {img} = res as ImageResult
-      AddImage(img)
-    }) : RemoveImage()
+    if (type) {
+      this.setState({
+        loading: true
+      })
+      fetchRandomImage().then(res => {
+        const {img} = res as ImageResult
+        AddImage(img)
+      }).finally(() => {
+        this.setState({
+          loading: false
+        })
+      })
+      return
+    }
+    RemoveImage()
   }
   render() {
     return (
@@ -61,7 +74,7 @@ class Hello extends Component<IHelloProps, IHelloState> {
             <MinusOutlined />
           </StyledButton>
           <Input value={this.state.message} placeholder="React demo ..." allowClear maxLength={10} type="text" onChange={this.handleChange}/>
-          <StyledButton disabled={this.state.count >= 9} type="primary" onClick={() => {
+          <StyledButton loading={this.state.loading} disabled={this.state.count >= 9} type="primary" onClick={() => {
             this.handleButtonClick(true)
           }}>
             <PlusOutlined />
