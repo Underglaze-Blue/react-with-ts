@@ -4,3 +4,7 @@ export const fetchRandomImage = async (): Promise<object> => {
   const index: number = Math.round(Math.random())
   return Instance.get(`/random_img.php?type=bg&ctype=${typeArr[index]}&return=json`)
 }
+
+export const fetchPoetry = async (): Promise<object> => {
+  return Instance.get('https://v1.jinrishici.com/all.json')
+}

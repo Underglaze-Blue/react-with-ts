@@ -1,18 +1,16 @@
 import React from 'react'
-import logo from './logo.svg'
 import Create from "./pages/gallery/create"
 import Gallery from "./pages/gallery/gallery"
 import './App.css'
+import Poetry from "./pages/poetry/poetry";
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-      </header>
-      <section className="App-content">
+        <Poetry />
         <Create message="React"/>
-      </section>
+      </header>
       <main>
         <Gallery />
       </main>
