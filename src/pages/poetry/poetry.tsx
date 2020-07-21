@@ -8,13 +8,9 @@ interface IPoetryState {
   content: string
   origin: string
   author: string
-  category: string
 }
 
-interface IPoetryPromise {
-  content: string
-  origin: string
-  author: string
+interface IPoetryPromise extends IPoetryState{
   category: string
 }
 
@@ -32,15 +28,14 @@ class Poetry extends Component<IPoetryProps, IPoetryState> {
     this.state  = {
       content: '',
       origin: '',
-      author: '',
-      category: ''
+      author: ''
     }
   }
   componentWillMount() {
     fetchPoetry().then(res => {
-      const {content, origin, author, category} = res as IPoetryPromise
+      const {content, origin, author} = res as IPoetryPromise
       this.setState({
-        content, origin, author, category
+        content, origin, author
       })
     })
   }
