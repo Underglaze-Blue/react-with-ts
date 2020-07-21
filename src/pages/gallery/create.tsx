@@ -13,13 +13,11 @@ class Create extends Component<IHelloProps, IHelloState> {
     super(props)
     this.state = {
       message: props.message,
-      count: props.count as number,
       loading: false
     }
   }
   static defaultProps = {
-    message: 'defaultMessage',
-    count: 0
+    message: 'defaultMessage'
   }
   handleChange = (e: FormEvent<HTMLInputElement>) => {
     this.setState({
@@ -27,7 +25,6 @@ class Create extends Component<IHelloProps, IHelloState> {
     })
   }
   handleButtonClick = (type: boolean | null) => {
-    const { count } = this.state
     if (type) {
       this.setState({
         loading: true
@@ -37,32 +34,29 @@ class Create extends Component<IHelloProps, IHelloState> {
         this.props.AddImage(img)
       }).finally(() => {
         this.setState({
-          loading: false,
-          count: count + 1
+          loading: false
         })
       })
       return
     }
-    this.setState({
-      count: count - 1
-    })
     this.props.RemoveImage()
   }
   render() {
+    let count = (this.props.imageStore as Array<string>).length
     return (
       <article>
-        <h1 className="color-white">{this.state.message}{this.state.count >= 5 && '🐂🍺'}...</h1>
-        <Badge showZero count={this.state.count}>
+        <h1 className="color-white">{this.state.message}{count >= 5 && '🐂🍺'}...</h1>
+        <Badge showZero count={count}>
           <h2 className="color-white">Button click count..</h2>
         </Badge>
         <aside style={{display: "flex"}}>
-          <StyledButton type="primary" danger disabled={this.state.count <= 0} onClick={() => {
+          <StyledButton type="primary" danger disabled={count <= 0} onClick={() => {
             this.handleButtonClick(false)
           }}>
             <MinusOutlined />
           </StyledButton>
           <Input value={this.state.message} placeholder="React demo ..." allowClear maxLength={10} type="text" onChange={this.handleChange}/>
-          <StyledButton loading={this.state.loading} disabled={this.state.count >= 9} type="primary" onClick={() => {
+          <StyledButton loading={this.state.loading} disabled={count >= 9} type="primary" onClick={() => {
             this.handleButtonClick(true)
           }}>
             <PlusOutlined style={{display: this.state.loading ? 'none' : ''}} />

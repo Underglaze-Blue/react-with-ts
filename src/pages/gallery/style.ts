@@ -7,7 +7,7 @@ export const GalleryContainer = styled.div`
   flex-wrap: wrap;
 `
 export const StyledCard = styled(Card)`
-  width: 240px;
+  width: 260px;
   margin: 12px;
   .ant-card-body {
     padding: 10px 8px;
@@ -16,8 +16,8 @@ export const StyledCard = styled(Card)`
   }
 `
 export const Image = styled.img`
-  width: calc(240px - 24px);
-  height: calc(180px - 24px);
+  width: 100%;
+  height: calc(180px - 16px);
   object-fit: contain
 `
 

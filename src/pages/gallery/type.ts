@@ -1,13 +1,12 @@
 export interface IHelloProps {
   message?: string
-  count?: number,
+  imageStore?: Array<string>,
   AddImage: (url: string) => void,
   RemoveImage: () => void
 }
 
 export interface IHelloState {
   message: string | undefined
-  count: number,
   loading: boolean
 }
 
