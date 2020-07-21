@@ -1,4 +1,3 @@
-import { createStore } from 'redux';
 import { IMAGE_OPERATION } from './actionTypes'
 import { ImageUrl } from '../models'
 
@@ -9,7 +8,7 @@ export interface ImageOperationAction {
 
 const defaultState: ImageUrl[] = []
 
-export const imageStore = createStore((state: ImageUrl[] = defaultState, action: ImageOperationAction): ImageUrl[] => {
+const imageStore = (state: ImageUrl[] = defaultState, action: ImageOperationAction): ImageUrl[] => {
   switch (action.type) {
     case IMAGE_OPERATION.ADD :
       state.push(action.data as string)
@@ -21,25 +20,6 @@ export const imageStore = createStore((state: ImageUrl[] = defaultState, action:
       return state
   }
   return state.concat([])
-})
-
-export const GetImageList = imageStore.getState()
-
-imageStore.subscribe(() => {
-  console.log(imageStore.getState())
-})
-
-export const AddImage = (url: ImageUrl) => {
-  imageStore.dispatch({
-    type: IMAGE_OPERATION.ADD,
-    data: url
-  })
-  return imageStore.getState()
 }
 
-export const RemoveImage = () => {
-  imageStore.dispatch({
-    type: IMAGE_OPERATION.REMOVE
-  })
-  return imageStore.getState()
-}
+export default imageStore

@@ -1,7 +1,7 @@
 import React from 'react'
 import logo from './logo.svg'
-import Hello from "./components/Hello"
-import Gallery from "./components/gallery"
+import Create from "./pages/gallery/create"
+import Gallery from "./pages/gallery/gallery"
 import './App.css'
 
 function App() {
@@ -11,7 +11,7 @@ function App() {
         <img src={logo} className="App-logo" alt="logo" />
       </header>
       <section className="App-content">
-        <Hello message="React"/>
+        <Create message="React"/>
       </section>
       <main>
         <Gallery />

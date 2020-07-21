@@ -1,58 +1,14 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Card } from 'antd'
-import styled from 'styled-components'
-import { ImageUrl } from '../models'
+import { ImageUrl } from '../../models'
 import {Modal, Button} from 'antd'
-import {download} from '../utils'
+import {download} from '../../utils'
+import {GalleryContainer ,StyledCard, ShowImage, StyledSpan, Image} from './style'
+import {IImageStore, IGalleryProps, IGalleryState} from "./type";
 
-const GalleryContainer = styled.div`
-  display: flex;
-  width: 95vw;
-  flex-wrap: wrap;
-`
-const StyledCard = styled(Card)`
-  width: 240px;
-  margin: 12px;
-  .ant-card-body {
-    padding: 10px 8px;
-    display: flex;
-    flex-direction: column;
-  }
-`
-const Image = styled.img`
-  width: calc(240px - 24px);
-  height: calc(180px - 24px);
-  object-fit: contain
-`
-
-const ShowImage = styled.img`
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-`
-
-const StyledSpan = styled.span`
-  width: 100%;
-  text-align: center;
-  display: inline-block;
-`
-
-interface IGalleryProps {
-  onAdd?: () => {}
-  onSub?: () => {}
-  items: ImageUrl[]
-}
-
-interface IGalleryState {
-  items: ImageUrl[],
-  visible: boolean,
-  item: string
-}
-
-const mapStateToProps = (state: ImageUrl[]) => {
+const mapStateToProps = (state: IImageStore) => {
   return {
-    items: state
+    items: state.imageStore
   }
 }
 

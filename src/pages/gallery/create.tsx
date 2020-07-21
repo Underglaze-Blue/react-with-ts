@@ -1,27 +1,14 @@
 import React, { Component, FormEvent } from 'react'
-import { Input, Button, Badge } from 'antd'
+import { Input, Badge } from 'antd'
 import { PlusOutlined, MinusOutlined } from '@ant-design/icons'
-import styled from 'styled-components'
-import { AddImage, RemoveImage } from '../store/image-reducer'
-import {fetchRandomImage} from '../api'
-import {ImageResult} from '../models'
+import {StyledButton} from './style'
+import actions from '../../store/actionCreators'
+import {fetchRandomImage} from '../../api'
+import {ImageResult} from '../../models'
+import { connect } from 'react-redux'
+import {IHelloProps, IHelloState} from "./type";
 
-const StyledButton = styled(Button)`
-  margin: 0 16px;
-`
-
-interface IHelloProps {
-  message?: string
-  count?: number
-}
-
-interface IHelloState {
-  message: string | undefined
-  count: number,
-  loading: boolean
-}
-
-class Hello extends Component<IHelloProps, IHelloState> {
+class Create extends Component<IHelloProps, IHelloState> {
   constructor(props: IHelloProps) {
     super(props)
     this.state = {
@@ -41,29 +28,30 @@ class Hello extends Component<IHelloProps, IHelloState> {
   }
   handleButtonClick = (type: boolean | null) => {
     const { count } = this.state
-    this.setState({
-      count: type ? count + 1 : count - 1
-    })
     if (type) {
       this.setState({
         loading: true
       })
       fetchRandomImage().then(res => {
         const {img} = res as ImageResult
-        AddImage(img)
+        this.props.AddImage(img)
       }).finally(() => {
         this.setState({
-          loading: false
+          loading: false,
+          count: count + 1
         })
       })
       return
     }
-    RemoveImage()
+    this.setState({
+      count: count - 1
+    })
+    this.props.RemoveImage()
   }
   render() {
     return (
       <article>
-        <h1 className="color-white">{this.state.message}{this.state.count >= 10 && '🐂🍺'}...</h1>
+        <h1 className="color-white">{this.state.message}{this.state.count >= 5 && '🐂🍺'}...</h1>
         <Badge showZero count={this.state.count}>
           <h2 className="color-white">Button click count..</h2>
         </Badge>
@@ -77,7 +65,7 @@ class Hello extends Component<IHelloProps, IHelloState> {
           <StyledButton loading={this.state.loading} disabled={this.state.count >= 9} type="primary" onClick={() => {
             this.handleButtonClick(true)
           }}>
-            <PlusOutlined />
+            <PlusOutlined style={{display: this.state.loading ? 'none' : ''}} />
           </StyledButton>
         </aside>
       </article>
@@ -85,4 +73,4 @@ class Hello extends Component<IHelloProps, IHelloState> {
   }
 }
 
-export default Hello
+export default connect(state => state, actions)(Create)

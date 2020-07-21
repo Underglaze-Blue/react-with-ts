@@ -1,8 +1,20 @@
-import {CHANGE_COUNT} from './actionTypes';
-
-export const changeCount = (list: Array<string>) => {
+import {IMAGE_OPERATION} from './actionTypes';
+import {ImageUrl} from '../models'
+export const AddImage = (url: ImageUrl) => {
   return {
-    type: CHANGE_COUNT,
-    list
+    type: IMAGE_OPERATION.ADD,
+    data: url
   }
 }
+
+export const RemoveImage = () => {
+  return {
+    type: IMAGE_OPERATION.REMOVE
+  }
+}
+
+export default {
+  AddImage,
+  RemoveImage
+}
+
