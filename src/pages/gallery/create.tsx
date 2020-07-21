@@ -1,12 +1,33 @@
 import React, { Component, FormEvent } from 'react'
-import { Input, Badge } from 'antd'
+import {Input, Badge, Button} from 'antd'
 import { PlusOutlined, MinusOutlined } from '@ant-design/icons'
-import {StyledButton} from './style'
 import actions from '../../store/actionCreators'
 import {fetchRandomImage} from '../../api'
 import {ImageResult} from '../../models'
 import { connect } from 'react-redux'
-import {IHelloProps, IHelloState} from "./type";
+import styled from "styled-components";
+
+interface IHelloProps {
+  message?: string
+  imageStore?: Array<string>,
+  AddImage: (url: string) => void,
+  RemoveImage: () => void
+}
+
+interface IHelloState {
+  message: string | undefined
+  loading: boolean
+}
+
+const StyledButton = styled(Button)`
+  margin: 0 16px;
+  width: 54px;
+  .anticon, 
+  .anticon-loading, 
+  .ant-btn-loading-icon{
+    padding-right: 0!important;
+  }
+`
 
 class Create extends Component<IHelloProps, IHelloState> {
   constructor(props: IHelloProps) {
