@@ -1,7 +1,13 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## 计划
-![xmind](/readme/xmind.png)
+1. 使用redux实现 -- 已完成
+
+![redux](/readme/redux.png)
+
+2. 实现router
+
+![router](/readme/router.png)
 
 ## Available Scripts
 
