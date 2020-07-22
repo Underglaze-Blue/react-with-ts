@@ -45,6 +45,7 @@ const StyledMain = styled.main`
 
 const StyledUl = styled.ul`
   display: flex;
+  padding: 0;
   li{
     list-style: none;
     .ant-btn{
