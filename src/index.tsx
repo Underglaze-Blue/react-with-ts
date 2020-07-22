@@ -5,11 +5,14 @@ import  store  from './store'
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import {BrowserRouter} from 'react-router-dom'
 
 ReactDOM.render(
   <React.Fragment>
     <Provider store={store}>
-      <App />
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
     </Provider>
   </React.Fragment>,
   document.getElementById('root')
