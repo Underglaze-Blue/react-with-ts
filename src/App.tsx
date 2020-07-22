@@ -28,10 +28,7 @@ const StyledApp = styled.div`
   font-size: calc(10px + 2vmin);
   color: white;
 `
-const Main = styled.main`
-  width: 100%;
-  height: 800px;
-`
+
 interface IAppProps {
 
 }
@@ -62,14 +59,14 @@ class App extends Component<IAppProps, IAppState> {
             <li><Button onClick={ () => {history.push('/poetry')}}>Poetry</Button></li>
           </ul>
           </StyledHeader>
-          <Main>
+          <main>
             <Switch>
               <Route path="/gallery" exact component={Gallery} />
               <Route path="/library" exact component={LibraryApp} />
               <Route path="/user" exact component={UserApp} />
               <Route path="/poetry" exact component={Poetry} />
             </Switch>
-          </Main>
+          </main>
         </StyledApp>
       </Router>
     )
