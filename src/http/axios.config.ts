@@ -1,7 +1,7 @@
 import Axios, { AxiosInstance, AxiosResponse, AxiosRequestConfig } from 'axios';
 import {BaseResponse} from "./axios.type";
 // 接口前缀
-const BASE_URL = '/api';
+const BASE_URL = '';
 
 // axios 配置实例
 const instance: AxiosInstance = Axios.create({

@@ -11,7 +11,7 @@ import { createBrowserHistory, History } from 'history'
 
 const StyledApp = styled.div`
   text-align: center;
-  background-color: #282c34;
+  background-color: #495c69;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
