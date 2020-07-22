@@ -5,7 +5,10 @@ import LibraryApp from './pages/library'
 import UserApp from './pages/user'
 import Poetry from "./pages/poetry/poetry"
 import styled from "styled-components"
-import { BrowserRouter as Router, Route, Link } from "react-router-dom"
+// import { BrowserRouter as Router, Route, Link } from "react-router-dom"
+import { Switch, Router, Route } from 'react-router'
+import { createBrowserHistory, History } from 'history'
+import { Button } from 'antd'
 
 const StyledHeader = styled.header`
   display: flex;
@@ -25,31 +28,52 @@ const StyledApp = styled.div`
   font-size: calc(10px + 2vmin);
   color: white;
 `
+const Main = styled.main`
+  width: 100%;
+  height: 800px;
+`
+interface IAppProps {
 
-class App extends Component {
+}
+interface IAppState {
+  history: History
+}
+
+class App extends Component<IAppProps, IAppState> {
+  constructor(props: IAppProps) {
+    super(props)
+    this.state = {
+      history: createBrowserHistory()
+    }
+  }
+
   render() {
+    const { history } = this.state
     return (
-      <Router>
+      <Router history={history}>
         <StyledApp className="App">
           <StyledHeader className="App-header">
-            <Poetry />
+            <h2>Router Demo</h2>
             <Create message="Click To Create Gallery"/>
+          <ul>
+            <li><Button onClick={ () => {history.push('/gallery')}}>Gallery</Button></li>
+            <li><Button onClick={ () => {history.push('/library')}}>Library App</Button></li>
+            <li><Button onClick={ () => {history.push('/user')}}>User App</Button></li>
+            <li><Button onClick={ () => {history.push('/poetry')}}>Poetry</Button></li>
+          </ul>
           </StyledHeader>
-          <main>
-            <ul>
-              <li><Link to="/gallery">Gallery</Link></li>
-              <li><Link to="/library">Library</Link></li>
-              <li><Link to="/user">User</Link></li>
-            </ul>
-          </main>
-
-          <Route path="/gallery" exact component={Gallery} />
-          <Route path="/library" exact component={LibraryApp} />
-          <Route path="/user" component={UserApp} />
+          <Main>
+            <Switch>
+              <Route path="/gallery" exact component={Gallery} />
+              <Route path="/library" exact component={LibraryApp} />
+              <Route path="/user" exact component={UserApp} />
+              <Route path="/poetry" exact component={Poetry} />
+            </Switch>
+          </Main>
         </StyledApp>
       </Router>
     )
   }
 }
 
-export default App;
+export default App

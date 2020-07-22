@@ -104,7 +104,7 @@ class Gallery extends Component<IGalleryProps, IGalleryState> {
   render(): React.ReactElement {
     const { items } = this.props
     return (
-      <GalleryContainer>
+      <GalleryContainer style={{width: '100%', height: '100%'}}>
         {this._onRenderCard(items)}
         <Modal
           title="Show Image"
