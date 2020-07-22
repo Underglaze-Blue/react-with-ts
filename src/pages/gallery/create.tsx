@@ -68,7 +68,7 @@ class Create extends Component<IHelloProps, IHelloState> {
       <article>
         <h1 className="color-white">{this.state.message}{count >= 5 && '🐂🍺'}...</h1>
         <Badge showZero count={count}>
-          <h2 className="color-white">Button click count..</h2>
+          <h2 className="color-white">Gallery Length...</h2>
         </Badge>
         <aside style={{display: "flex"}}>
           <StyledButton type="primary" danger disabled={count <= 0} onClick={() => {
