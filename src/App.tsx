@@ -8,10 +8,10 @@ import LibraryApp from './pages/library'
 import UserApp from './pages/user'
 import Poetry from "./pages/poetry"
 import Menu from './pages/menu'
+import {fetchBingHPImageArchive} from './api'
 
 const StyledApp = styled.div`
   text-align: center;
-  background-color: #495c69;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -21,26 +21,66 @@ const StyledApp = styled.div`
   color: white;
 `
 
+const StyledBackground = styled.div`
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  &::before{
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: "";
+    background-color: rgba(0,0,0,.5);
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+  }
+`
+
 interface IAppProps {
 
 }
 interface IAppState {
-  history: History
+  history: History,
+  bgImage: string
+}
+
+interface PromiseImage {
+  images: Array<BgImage>
+}
+
+interface BgImage {
+  url: string
 }
 
 class App extends Component<IAppProps, IAppState> {
   constructor(props: IAppProps) {
     super(props)
     this.state = {
-      history: createBrowserHistory()
+      history: createBrowserHistory(),
+      bgImage: ''
     }
+  }
+
+  componentDidMount() {
+    fetchBingHPImageArchive().then(res => {
+      console.log(res)
+      this.setState({
+        bgImage: ((res as PromiseImage).images)[0].url
+      })
+    })
   }
 
   render() {
     const { history } = this.state
+    const styleApp = {
+      backgroundImage: `url(https://cn.bing.com${this.state.bgImage})`
+    }
     return (
       <Router history={history}>
-        <StyledApp>
+        <StyledApp >
+          <StyledBackground style={styleApp}/>
           <Redirect to='menu'/>
           <Switch>
             <Route path="/menu" exact component={Menu} />

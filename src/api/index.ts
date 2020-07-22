@@ -12,3 +12,7 @@ export const fetchPoetry = async (): Promise<object> => {
 export const fetchColors = async (): Promise<object> => {
   return Instance.get('./data/colors.json')
 }
+
+export const fetchBingHPImageArchive = async ():Promise<object> => {
+  return Instance.get('/bing/HPImageArchive.aspx?format=js&idx=0&n=1')
+}

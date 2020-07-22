@@ -11,4 +11,14 @@ module.exports = (app) => {
       }
     })
   )
+  app.use(
+    '/bing',
+    createProxyMiddleware({
+      target: 'https://cn.bing.com',
+      changeOrigin: true,
+      pathRewrite: {
+        '^/bing': ''
+      }
+    })
+  )
 };
