@@ -5,9 +5,13 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ![redux](/readme/redux.png)
 
-2. 实现router
+2. 实现router -- 已完成
 
 ![router](/readme/router.png)
+
+3. 二级路由
+
+![route](/readme/menu.png)
 
 ## Available Scripts
 
