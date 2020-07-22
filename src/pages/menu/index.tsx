@@ -4,7 +4,7 @@ import styled from "styled-components";
 import {createBrowserHistory, History} from 'history'
 import { withRouter, RouteComponentProps } from 'react-router'
 
-interface IMenuProps extends RouteComponentProps { 
+interface IMenuProps extends RouteComponentProps {
 
 }
 
@@ -69,7 +69,7 @@ class Menu extends Component<IMenuProps, IMenuState>{
     return MenuList.map(item => {
       return (
         <li key={item.path}>
-          <Button onClick={() => {this.handleJump(item.path)}} type="link">{item.name}</Button>
+          <Button danger onClick={() => {this.handleJump(item.path)}} type="link">{item.name}</Button>
         </li>
       )
     })
