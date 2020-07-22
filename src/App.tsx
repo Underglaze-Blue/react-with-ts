@@ -1,13 +1,13 @@
 import React, {Component} from 'react'
+import styled from "styled-components"
+// import { BrowserRouter as Router, Route, Link } from "react-router-dom"
+import { Switch, Router, Route, Redirect } from 'react-router'
+import { createBrowserHistory, History } from 'history'
 import IGallery from "./pages/gallery"
 import LibraryApp from './pages/library'
 import UserApp from './pages/user'
 import Poetry from "./pages/poetry"
 import Menu from './pages/menu'
-import styled from "styled-components"
-// import { BrowserRouter as Router, Route, Link } from "react-router-dom"
-import { Switch, Router, Route, Redirect } from 'react-router'
-import { createBrowserHistory, History } from 'history'
 
 const StyledApp = styled.div`
   text-align: center;
