@@ -10,6 +10,8 @@ import Poetry from "./pages/poetry"
 import Menu from './pages/menu'
 import {fetchBingHPImageArchive} from './api'
 
+const ImageCount = 8
+
 const StyledApp = styled.div`
   text-align: center;
   min-height: 100vh;
@@ -64,10 +66,10 @@ class App extends Component<IAppProps, IAppState> {
   }
 
   componentDidMount() {
-    fetchBingHPImageArchive().then(res => {
+    fetchBingHPImageArchive(ImageCount).then(res => {
       console.log(res)
       this.setState({
-        bgImage: ((res as PromiseImage).images)[0].url
+        bgImage: ((res as PromiseImage).images)[parseInt(String(Math.random() * ImageCount))].url
       })
     })
   }
