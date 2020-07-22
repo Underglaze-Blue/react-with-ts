@@ -2,8 +2,9 @@ import React, {Component} from 'react'
 import {Button} from 'antd'
 import styled from "styled-components";
 import {createBrowserHistory, History} from 'history'
+import { withRouter, RouteComponentProps } from 'react-router'
 
-interface IMenuProps {
+interface IMenuProps extends RouteComponentProps { 
 
 }
 
@@ -61,7 +62,7 @@ class Menu extends Component<IMenuProps, IMenuState>{
   }
 
   handleJump = (path: string) => {
-    this.state.history.push(path)
+    this.props.history.push(path)
   }
 
   _renderMenuList  = (): React.ReactElement[] => {
@@ -85,4 +86,4 @@ class Menu extends Component<IMenuProps, IMenuState>{
   }
 }
 
-export default Menu
+export default withRouter(Menu)
