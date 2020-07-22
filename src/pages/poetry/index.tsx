@@ -22,8 +22,10 @@ interface IPoetryPromise extends IPoetryCommon{
 const PoetryMain = styled.main`
   flex: 0 0 30vw;
   display: flex;
+  min-height: 100vh;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 `
 
 const StyledH3 = styled.h3`
@@ -34,7 +36,7 @@ const StyledSpan = styled.span`
   font-size: 14px;
 `
 
-class Poetry extends Component<IPoetryProps, IPoetryState> {
+class Index extends Component<IPoetryProps, IPoetryState> {
   constructor(props:IPoetryProps) {
     super(props);
     this.state  = {
@@ -77,4 +79,4 @@ class Poetry extends Component<IPoetryProps, IPoetryState> {
   }
 }
 
-export default Poetry
+export default Index

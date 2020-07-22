@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import IGallery from "./pages/gallery"
 import LibraryApp from './pages/library'
 import UserApp from './pages/user'
-import Poetry from "./pages/poetry/poetry"
+import Poetry from "./pages/poetry"
 import Menu from './pages/menu'
 import styled from "styled-components"
 // import { BrowserRouter as Router, Route, Link } from "react-router-dom"
@@ -40,15 +40,15 @@ class App extends Component<IAppProps, IAppState> {
     const { history } = this.state
     return (
       <Router history={history}>
-        <StyledApp className="App">
-          <Redirect to='/menu'/>
-            <Switch>
-              <Route path="/menu" exact component={Menu} />
-              <Route path="/gallery" exact component={IGallery} />
-              <Route path="/library" exact component={LibraryApp} />
-              <Route path="/user" exact component={UserApp} />
-              <Route path="/poetry" exact component={Poetry} />
-            </Switch>
+        <StyledApp>
+          <Redirect to='menu'/>
+          <Switch>
+            <Route path="/menu" exact component={Menu} />
+            <Route path="/gallery" exact component={IGallery} />
+            <Route path="/library" exact component={LibraryApp} />
+            <Route path="/user" exact component={UserApp} />
+            <Route path="/poetry" exact component={Poetry} />
+          </Switch>
         </StyledApp>
       </Router>
     )
