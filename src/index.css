@@ -18,3 +18,7 @@ code {
 .color-white{
   color: #fff;
 }
+
+.font-small{
+  font-size: 12px;
+}
