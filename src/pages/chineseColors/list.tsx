@@ -15,21 +15,26 @@ interface IColorsState {
   gray: number
 }
 
-const StyledUl = styled.ul`
+const StyledWrapper = styled.div`
   margin: 0 auto;
   width: 70vw;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, calc(350px + 2vh));
-  grid-gap: 10px;
+  padding: 1vh 0;
   box-sizing: border-box;
   height: 80vh;
-  overflow-y: auto;
-  justify-content: space-around;
   background: rgba(255,255,255,.1);
   border-radius: 10px;
   transition: background-color 2s ease-in;
-  &::-webkit-scrollbar {
-    width: 0;
+  ul{
+    height: 78vh;
+    width: 100%;
+    overflow-y: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, calc(350px + 2vh));
+    grid-gap: 10px;
+    justify-content: space-around;
+    &::-webkit-scrollbar {
+      width: 0;
+    }
   }
   li{
    width: 100%;
@@ -143,10 +148,12 @@ class ColorList extends Component<IColorsProps, IColorsState>{
   render() {
     return (
       !this.state.colors.length ? <Loading/> :
-        <StyledUl style={{backgroundColor: this.handleBackgroundColor(this.state.gray, 0.1)}}>
-          {this._renderColors(this.state.colors)}
+        <StyledWrapper style={{backgroundColor: this.handleBackgroundColor(this.state.gray, 0.1)}}>
+          <ul>
+            {this._renderColors(this.state.colors)}
+          </ul>
           {/*<ICanvas cmyk={[255,255,255,255]} rgb={[255,255,255]}/>*/}
-        </StyledUl>
+        </StyledWrapper>
     );
   }
 }
