@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import styled from "styled-components"
 // import { BrowserRouter as Router, Route, Link } from "react-router-dom"
-import { Switch, Router, Route, Redirect } from 'react-router'
+import {Switch, Router, Route, Redirect} from 'react-router'
 import { createBrowserHistory, History } from 'history'
 import IGallery from "./pages/gallery"
 import LibraryApp from './pages/library'
@@ -124,9 +124,9 @@ class App extends Component<IAppProps, IAppState> {
       <Router history={history}>
         <StyledApp >
           <StyledBackground style={styleApp}/>
-          <Redirect to='menu'/>
           <Switch>
             {this._renderRoute(Routes)}
+            <Redirect exact from="/" to="menu" />
           </Switch>
         </StyledApp>
       </Router>

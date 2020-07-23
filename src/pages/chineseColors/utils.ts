@@ -1,5 +1,4 @@
 import {Colors, TupleColor} from '../../type'
-import React, {createRef} from 'react'
 
 export const colorsSort = (colorsArr: Array<Colors>) => {
   colorsArr.sort((prev, next) =>{

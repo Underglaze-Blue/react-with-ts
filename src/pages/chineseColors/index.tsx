@@ -48,8 +48,8 @@ class ChineseColors extends Component<IColorsProps, IColorsState>{
   _renderColors = (colors: Array<Colors>): React.ReactElement[] => {
     return colors.map(item => {
       return (
-        <li>
-          <ICanvas cmyk={item.CMYK} rgb={item.RGB} key={item.name + item.pinyin}/>
+        <li key={item.name + item.pinyin}>
+          <ICanvas cmyk={item.CMYK} rgb={item.RGB} />
           <span>{item.name}</span>
           <span>{item.pinyin.toLocaleUpperCase()}</span>
         </li>
