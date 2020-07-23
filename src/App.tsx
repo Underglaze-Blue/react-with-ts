@@ -8,6 +8,7 @@ import LibraryApp from './pages/library'
 import UserApp from './pages/user'
 import Poetry from "./pages/poetry"
 import Menu from './pages/menu'
+import ChineseColors from './pages/chineseColors'
 import {fetchBingHPImageArchive} from './api'
 
 const ImageCount = 8
@@ -28,6 +29,8 @@ const StyledBackground = styled.div`
   width: 100vw;
   height: 100vh;
   z-index: -1;
+  filter: blur(2px);
+  -webkit-filter: blur(2px);
   &::before{
     position: absolute;
     top: 0;
@@ -56,6 +59,38 @@ interface BgImage {
   url: string
 }
 
+interface RouteTypes {
+  path: string
+  component: React.ComponentClass
+}
+
+const Routes: Array<RouteTypes> = [
+  {
+    path: "/menu",
+    component: Menu
+  },
+  {
+    path: "/gallery",
+    component: IGallery
+  },
+  {
+    path: "/library",
+    component: LibraryApp
+  },
+  {
+    path: "/user",
+    component: UserApp
+  },
+  {
+    path: "/poetry",
+    component: Poetry
+  },
+  {
+    path: "/cn-colors",
+    component: ChineseColors
+  },
+]
+
 class App extends Component<IAppProps, IAppState> {
   constructor(props: IAppProps) {
     super(props)
@@ -74,6 +109,12 @@ class App extends Component<IAppProps, IAppState> {
     })
   }
 
+  _renderRoute = (routes: Array<RouteTypes>): React.ReactNode => {
+    return routes.map(item => {
+      return <Route path={item.path} exact component={item.component} key={item.path}/>
+    })
+  }
+
   render() {
     const { history } = this.state
     const styleApp = {
@@ -85,11 +126,7 @@ class App extends Component<IAppProps, IAppState> {
           <StyledBackground style={styleApp}/>
           <Redirect to='menu'/>
           <Switch>
-            <Route path="/menu" exact component={Menu} />
-            <Route path="/gallery" exact component={IGallery} />
-            <Route path="/library" exact component={LibraryApp} />
-            <Route path="/user" exact component={UserApp} />
-            <Route path="/poetry" exact component={Poetry} />
+            {this._renderRoute(Routes)}
           </Switch>
         </StyledApp>
       </Router>
