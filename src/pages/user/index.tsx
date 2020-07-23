@@ -1,4 +1,5 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
+import Delay from './timed-job/delay'
 
 interface IUserAppProps {
 
@@ -11,7 +12,7 @@ class UserApp extends Component<IUserAppProps, IUserAppState> {
 
   render() {
     return (
-      <div>user application</div>
+      <div><Delay /></div>
     )
   }
 }
