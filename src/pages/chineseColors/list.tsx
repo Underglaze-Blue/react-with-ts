@@ -7,12 +7,12 @@ import styled from "styled-components";
 import Loading from "../../components/loading";
 
 interface IColorsProps {
-  setBackgroundColor: (rgb: TupleColor<number, 3>) => void
+  setBackgroundColor: (rgb: TupleColor<number, 3>, gray: number) => void
 }
 
 interface IColorsState {
   colors: Array<Colors>
-  Gray: number
+  gray: number
 }
 
 const StyledUl = styled.ul`
@@ -83,34 +83,40 @@ class ColorList extends Component<IColorsProps, IColorsState>{
     super(props)
     this.state = {
       colors: [],
-      Gray: 0
+      gray: 0
     }
   }
 
   handleGetColors = () => {
     fetchColors().then(res => {
       const tempColors = colorsSort(res as Array<Colors>)
-      const [r, g, b] = tempColors[0].RGB
+      const index = parseInt(String(Math.random() * tempColors.length))
+      const [r, g, b] = tempColors[index].RGB
       this.setState({
         colors: tempColors,
-        Gray: (r * 30 + g * 59 + b * 11) / 100
+        gray: (r * 30 + g * 59 + b * 11) / 100
       })
-      this.props.setBackgroundColor(this.state.colors[0].RGB)
+      this.props.setBackgroundColor(this.state.colors[index].RGB, this.state.gray)
     })
   }
 
   handleClick = (rgb: TupleColor<number, 3>) => {
-    this.props.setBackgroundColor(rgb)
     const [r, g, b] = rgb
+    const gray = (r * 30 + g * 59 + b * 11) / 100
     this.setState({
-      Gray: (r * 30 + g * 59 + b * 11) / 100
+      gray
     })
+    this.props.setBackgroundColor(rgb, gray)
+  }
+
+  handleBackgroundColor = (gray: number, alpha: number): string => {
+    return gray > 175 ? `rgba(0,0,0,${alpha})` : `rgba(255,255,255,${alpha})`
   }
 
   _renderColors = (colors: Array<Colors>): React.ReactElement[] => {
     return colors.map((item, index, arr) => {
       return (
-        <li style={{backgroundColor: this.state.Gray > 180 ? 'rgba(0,0,0,.2)' : 'rgba(255,255,255,.2)'}} onClick={() => {this.handleClick(item.RGB)}} key={item.name + item.pinyin}>
+        <li style={{backgroundColor: this.handleBackgroundColor(this.state.gray, 0.2)}} onClick={() => {this.handleClick(item.RGB)}} key={item.name + item.pinyin}>
           <ICanvas cmyk={item.CMYK} rgb={item.RGB} />
           <StyledArticle>
             <StyledInformation className="font-small">
@@ -137,7 +143,7 @@ class ColorList extends Component<IColorsProps, IColorsState>{
   render() {
     return (
       !this.state.colors.length ? <Loading/> :
-        <StyledUl style={{backgroundColor: this.state.Gray > 180 ? 'rgba(0,0,0,.1)' : 'rgba(255,255,255,.2)'}}>
+        <StyledUl style={{backgroundColor: this.handleBackgroundColor(this.state.gray, 0.1)}}>
           {this._renderColors(this.state.colors)}
           {/*<ICanvas cmyk={[255,255,255,255]} rgb={[255,255,255]}/>*/}
         </StyledUl>

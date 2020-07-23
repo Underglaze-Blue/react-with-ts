@@ -9,6 +9,7 @@ interface IColorsProps {
 
 interface IColorsState {
   bgColor: string
+  gray: number
 }
 
 const StyledColorsWrapper = styled.main`
@@ -22,25 +23,27 @@ const StyledColorsWrapper = styled.main`
 `
 const StyledTitle = styled.h1`
   padding: 2vh 0;
+  transition: color 2s ease-in;
 `
 
 class ChineseColors extends Component<IColorsProps, IColorsState>{
   constructor(props: IColorsProps) {
     super(props);
     this.state = {
-      bgColor: ''
+      bgColor: '',
+      gray: 0
     }
   }
-  _setBackgroundColor = (rgb: TupleColor<number, 3>) => {
+  _setBackgroundColor = (rgb: TupleColor<number, 3>, gray: number) => {
     this.setState({
-      bgColor: `rgb(${rgb.join(',')})`
+      bgColor: `rgb(${rgb.join(',')})`,
+      gray
     })
-    console.log(this.state.bgColor)
   }
   render() {
     return (
       <StyledColorsWrapper style={{backgroundColor: this.state.bgColor}}>
-        <StyledTitle className="color-white">CHINESE COLORS</StyledTitle>
+        <StyledTitle style={{color: this.state.gray > 175 ? '#444444' : '#ffffff'}}>CHINESE COLORS</StyledTitle>
         <ColorList setBackgroundColor={this._setBackgroundColor}/>
       </StyledColorsWrapper>
     );
