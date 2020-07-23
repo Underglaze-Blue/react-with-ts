@@ -1,4 +1,4 @@
-import {Colors} from './type'
+import {Colors} from '../../type'
 
 const randomColorsIndex = (str: string, length: number): number => {
   const charCode = str.charCodeAt(0)

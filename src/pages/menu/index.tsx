@@ -4,7 +4,7 @@ import {createBrowserHistory, History} from 'history'
 import { withRouter, RouteComponentProps } from 'react-router'
 import {randomBackgroundColor} from './utils'
 import {fetchColors} from "../../api";
-import {Colors} from './type'
+import {Colors} from '../../type'
 
 interface IMenuProps extends RouteComponentProps {
 
