@@ -23,9 +23,9 @@ const StyledDiv = styled.div`
 `
 
 class ICanvas extends Component<ICanvasProps, ICanvasState> {
-  constructor(props: ICanvasProps) {
-    super(props);
-  }
+  // constructor(props: ICanvasProps) {
+  //   super(props);
+  // }
   static canvas = React.createRef<HTMLCanvasElement>()
 
   componentDidMount() {

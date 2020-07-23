@@ -39,7 +39,7 @@ const MenuList: Array<MenuItem> = [
   },
   {
     name: 'Chinese Colors',
-    path: '/cn-colors'
+    path: 'cn-colors'
   },
 
 ]
