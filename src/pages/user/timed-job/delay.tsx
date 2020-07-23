@@ -1,5 +1,4 @@
 import React from 'react'
-import { Button } from 'antd'
 import MultipleSelectButton, { MultipleButtonProps } from '../../../components/multi-select-button'
 
 interface IDelayProps {
