@@ -1,5 +1,11 @@
 import React from 'react'
 import { Button } from 'antd'
+import styled from 'styled-components'
+
+const StyledButton = styled(Button)`
+  border-radius: 0;
+  width: 72px;
+`
 
 type valueType = any
 
@@ -32,7 +38,7 @@ class ToggleButton extends React.Component<IToggleButtonProps, IToggleButtonStat
   render() {
     const { isSelect } = this.state
     return (
-      <Button type={isSelect ? 'primary' : 'default'} onClick={this._toggle}>{this.props.content}</Button>
+      <StyledButton type={isSelect ? 'primary' : 'default'} onClick={this._toggle}>{this.props.content}</StyledButton>
     )
   }
 }

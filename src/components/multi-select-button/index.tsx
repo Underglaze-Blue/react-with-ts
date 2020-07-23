@@ -1,6 +1,9 @@
 import React from 'react'
 import ToggleButton from './toggle'
+import styled from 'styled-components'
 
+const ToggleButtonGroup = styled.div`
+`
 export type MultipleButtonProps = {
   name: string
   value: any
@@ -49,9 +52,9 @@ class MultipleSelectButton extends React.Component<IDelayProps, IDelayState>{
 
   render() {
     return (
-      <div>
+      <ToggleButtonGroup>
         {this._renderMonthsToggle()}
-      </div>
+      </ToggleButtonGroup>
     )
   }
 }
