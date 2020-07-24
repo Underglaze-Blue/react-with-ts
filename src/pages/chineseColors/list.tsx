@@ -40,7 +40,7 @@ const StyledWrapper = styled.div`
    width: 100%;
    height: 110px;
    background: rgba(255,255,255,.2);
-   margin: 2vh 0;
+   margin: 1vh 0;
    padding: 0 1vh;
    border-radius: 5px;
    transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1), background-color 2s ease-in;
