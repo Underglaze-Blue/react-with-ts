@@ -1,5 +1,5 @@
 import { IMAGE_OPERATION } from './actionTypes'
-import { ImageUrl } from '../models'
+import { ImageUrl } from '../../models'
 
 export interface ImageOperationAction {
   type: IMAGE_OPERATION

@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import styled from "styled-components";
 import ColorList from "./list";
+import ColorInfo from './information'
 import {TupleColor} from "../../type";
 
 interface IColorsProps {
@@ -26,6 +27,10 @@ const StyledTitle = styled.h1`
   transition: color 2s ease-in;
 `
 
+const StyledMain = styled.main`
+  display: flex;
+`
+
 class ChineseColors extends Component<IColorsProps, IColorsState>{
   constructor(props: IColorsProps) {
     super(props);
@@ -44,7 +49,10 @@ class ChineseColors extends Component<IColorsProps, IColorsState>{
     return (
       <StyledColorsWrapper style={{backgroundColor: this.state.bgColor}}>
         <StyledTitle style={{color: this.state.gray > 175 ? '#444444' : '#ffffff'}}>CHINESE COLORS</StyledTitle>
-        <ColorList setBackgroundColor={this._setBackgroundColor}/>
+        <StyledMain>
+          <ColorInfo />
+          <ColorList setBackgroundColor={this._setBackgroundColor}/>
+        </StyledMain>
       </StyledColorsWrapper>
     );
   }

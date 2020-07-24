@@ -5,18 +5,27 @@ import {colorsSort, rgb2hsv} from './utils'
 import ICanvas from './canvas'
 import styled from "styled-components";
 import Loading from "../../components/loading";
+import {connect} from "react-redux";
+import actions from '../../store/colors/actionCreators'
 
 interface IColorsProps {
   setBackgroundColor: (rgb: TupleColor<number, 3>, gray: number) => void
+  setColorInfo: (rgb: TupleColor<number, 3>, gray: number) => void
 }
 
 interface IColorsState {
   colors: Array<Colors>
   gray: number
+  loading: boolean
+}
+
+interface ColorInfoType extends Colors{
+  gray: number
 }
 
 const StyledWrapper = styled.div`
-  margin: 0 auto;
+  flex: 0 0 70vw;
+  margin-right: 5vw;
   width: 70vw;
   padding: 1vh 0;
   box-sizing: border-box;
@@ -88,11 +97,15 @@ class ColorList extends Component<IColorsProps, IColorsState>{
     super(props)
     this.state = {
       colors: [],
-      gray: 0
+      gray: 0,
+      loading: false
     }
   }
 
   handleGetColors = () => {
+    this.setState({
+      loading: true
+    })
     fetchColors().then(res => {
       const tempColors = colorsSort(res as Array<Colors>)
       const index = parseInt(String(Math.random() * tempColors.length))
@@ -102,16 +115,24 @@ class ColorList extends Component<IColorsProps, IColorsState>{
         gray: (r * 30 + g * 59 + b * 11) / 100
       })
       this.props.setBackgroundColor(this.state.colors[index].RGB, this.state.gray)
+      this.props.setColorInfo({...this.state.colors[index], gray: this.state.gray})
+    }).finally(() => {
+      setTimeout(() => {
+        this.setState({
+          loading: false
+        })
+      }, 2000)
     })
   }
 
-  handleClick = (rgb: TupleColor<number, 3>) => {
-    const [r, g, b] = rgb
+  handleClick = (color: Colors) => {
+    const [r, g, b] = color.RGB
     const gray = (r * 30 + g * 59 + b * 11) / 100
     this.setState({
       gray
     })
-    this.props.setBackgroundColor(rgb, gray)
+    this.props.setBackgroundColor(color.RGB, gray)
+    this.props.setColorInfo({...color, gray})
   }
 
   handleBackgroundColor = (gray: number, alpha: number): string => {
@@ -121,13 +142,15 @@ class ColorList extends Component<IColorsProps, IColorsState>{
   _renderColors = (colors: Array<Colors>): React.ReactElement[] => {
     return colors.map((item, index, arr) => {
       return (
-        <li style={{backgroundColor: this.handleBackgroundColor(this.state.gray, 0.2)}} onClick={() => {this.handleClick(item.RGB)}} key={item.name + item.pinyin}>
+        <li style={{backgroundColor: this.handleBackgroundColor(this.state.gray, 0.2)}}
+            onClick={() => {this.handleClick(item)}}
+            key={item.name + item.pinyin}>
           <ICanvas cmyk={item.CMYK} rgb={item.RGB} />
           <StyledArticle>
             <StyledInformation className="font-small">
               <span>RGB: {item.RGB.join(', ')}</span>
               <span>CMYK: {item.CMYK.join(', ')}</span>
-              <span>HEX: {item.hex}</span>
+              <span>HEX: {item.hex.toLocaleUpperCase()}</span>
             </StyledInformation>
             <StyledInformation className="title">
               <StyledTitle>
@@ -147,7 +170,7 @@ class ColorList extends Component<IColorsProps, IColorsState>{
 
   render() {
     return (
-      !this.state.colors.length ? <Loading/> :
+      this.state.loading ? <Loading/> :
         <StyledWrapper style={{backgroundColor: this.handleBackgroundColor(this.state.gray, 0.1)}}>
           <ul>
             {this._renderColors(this.state.colors)}
@@ -158,4 +181,4 @@ class ColorList extends Component<IColorsProps, IColorsState>{
   }
 }
 
-export default ColorList
+export default connect(state => state, actions)(ColorList)

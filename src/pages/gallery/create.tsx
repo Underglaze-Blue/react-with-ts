@@ -1,7 +1,7 @@
 import React, { Component, FormEvent } from 'react'
 import {Input, Badge, Button} from 'antd'
 import { PlusOutlined, MinusOutlined } from '@ant-design/icons'
-import actions from '../../store/actionCreators'
+import actions from '../../store/gallery/actionCreators'
 import {fetchRandomImage} from '../../api'
 import {ImageResult} from '../../models'
 import { connect } from 'react-redux'
