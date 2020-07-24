@@ -52,11 +52,14 @@ class ICanvas extends Component<ICanvasProps, ICanvasState> {
       context.stroke();
     })
     this.props.rgb.forEach((item, index) => {
+      const coefficient = 350 - lineX
+      const lineToX = (lineX + coefficient * (item / 255))
+      const yCoordinate= y * (index + 1) + 2 * index
       context.beginPath();
-      context.moveTo(lineX,y * (index + 1) + 2 * index);
-      context.lineTo(lineX + lineX * (item / 255),y * (index + 1) + 2 * index)
-      context.fillText(RGBText[index], lineX - 20, y * (index + 1) + 4 * index)
       context.strokeStyle = RGBColor[index];
+      context.moveTo(lineX, yCoordinate);
+      context.lineTo(lineToX, yCoordinate)
+      context.fillText(RGBText[index], lineX - 20, y * (index + 1) + 4 * index)
       // context.strokeStyle = 'rgba(54,52,51,.1)';
       context.stroke();
     })
