@@ -4,12 +4,13 @@ import ColorList from "./list";
 import ColorInfo from './information'
 import {ColorInfoType} from "../../type";
 import { connect } from 'react-redux'
+import { withRouter, RouteComponentProps  } from 'react-router'
 
 interface IColorInfoStore {
   colorStore: ColorInfoType
 }
 
-interface IColorsProps{
+interface IColorsProps extends RouteComponentProps{
   colorInfo: ColorInfoType
 }
 
@@ -61,5 +62,4 @@ class ChineseColors extends Component<IColorsProps, IColorsState>{
     );
   }
 }
-
-export default connect(mapStateToProps)(ChineseColors)
+export default withRouter(connect(mapStateToProps)(ChineseColors))

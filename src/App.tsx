@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, {Component, ComponentClass} from 'react'
 import styled from "styled-components"
 // import { BrowserRouter as Router, Route, Link } from "react-router-dom"
 import {Switch, Router, Route, Redirect} from 'react-router'
