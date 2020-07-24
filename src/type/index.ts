@@ -7,3 +7,7 @@ export interface Colors {
   name: string
   pinyin: string
 }
+
+export interface ColorInfoType extends Colors{
+  gray: number
+}

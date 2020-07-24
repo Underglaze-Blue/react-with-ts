@@ -1,12 +1,9 @@
 import { COLORS_OPERATION } from './actionTypes'
-import {Colors} from "../../type";
+import { ColorInfoType} from "../../type";
 
-interface ColorInfoType extends Colors{
-  gray: number
-}
-
-export interface ColorOperationAction extends ColorInfoType{
-  type: COLORS_OPERATION
+export interface ColorOperationAction{
+  type: COLORS_OPERATION,
+  info: ColorInfoType
 }
 
 const defaultState: ColorInfoType = {
@@ -21,9 +18,11 @@ const defaultState: ColorInfoType = {
 const colorStore = (state: ColorInfoType = defaultState, action: ColorOperationAction): ColorInfoType => {
   switch (action.type) {
     case COLORS_OPERATION.SET_COLOR :
-      Object.keys(state).forEach((key) => {
-        // state[key as ColorInfoType] = action[key]
-      })
+      const {...arg} = action.info
+      state = arg
+      // Object.keys(state).forEach((key) => {
+      //   state[key] = action.info[key]
+      // })
       break
     default :
       return state

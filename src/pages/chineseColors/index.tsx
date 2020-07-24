@@ -2,10 +2,15 @@ import React, {Component} from 'react'
 import styled from "styled-components";
 import ColorList from "./list";
 import ColorInfo from './information'
-import {TupleColor} from "../../type";
+import {ColorInfoType} from "../../type";
+import { connect } from 'react-redux'
 
-interface IColorsProps {
+interface IColorInfoStore {
+  colorStore: ColorInfoType
+}
 
+interface IColorsProps{
+  colorInfo: ColorInfoType
 }
 
 interface IColorsState {
@@ -30,32 +35,31 @@ const StyledTitle = styled.h1`
 const StyledMain = styled.main`
   display: flex;
 `
+const mapStateToProps = (state: IColorInfoStore) => {
+  return {
+    colorInfo: state.colorStore
+  }
+}
 
 class ChineseColors extends Component<IColorsProps, IColorsState>{
   constructor(props: IColorsProps) {
     super(props);
     this.state = {
-      bgColor: '',
+      bgColor: `rgb(${this.props.colorInfo.RGB.join(',')})`,
       gray: 0
     }
-  }
-  _setBackgroundColor = (rgb: TupleColor<number, 3>, gray: number) => {
-    this.setState({
-      bgColor: `rgb(${rgb.join(',')})`,
-      gray
-    })
   }
   render() {
     return (
       <StyledColorsWrapper style={{backgroundColor: this.state.bgColor}}>
-        <StyledTitle style={{color: this.state.gray > 175 ? '#444444' : '#ffffff'}}>CHINESE COLORS</StyledTitle>
+        <StyledTitle style={{color: this.props.colorInfo.gray > 175 ? '#444444' : '#ffffff'}}>CHINESE COLORS</StyledTitle>
         <StyledMain>
           <ColorInfo />
-          <ColorList setBackgroundColor={this._setBackgroundColor}/>
+          <ColorList />
         </StyledMain>
       </StyledColorsWrapper>
     );
   }
 }
 
-export default ChineseColors
+export default connect(mapStateToProps)(ChineseColors)

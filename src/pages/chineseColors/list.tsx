@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {fetchColors} from "../../api";
-import {Colors, TupleColor} from '../../type'
+import {Colors, ColorInfoType} from '../../type'
 import {colorsSort} from './utils'
 import ICanvas from './canvas'
 import styled from "styled-components";
@@ -9,7 +9,6 @@ import {connect} from "react-redux";
 import actions from '../../store/colors/actionCreators'
 
 interface IColorsProps {
-  setBackgroundColor: (rgb: TupleColor<number, 3>, gray: number) => void
   setColorInfo: (info: ColorInfoType) => void
 }
 
@@ -17,10 +16,6 @@ interface IColorsState {
   colors: Array<Colors>
   gray: number
   loading: boolean
-}
-
-interface ColorInfoType extends Colors{
-  gray: number
 }
 
 const StyledWrapper = styled.div`
@@ -114,7 +109,6 @@ class ColorList extends Component<IColorsProps, IColorsState>{
         colors: tempColors,
         gray: (r * 30 + g * 59 + b * 11) / 100
       })
-      this.props.setBackgroundColor(this.state.colors[index].RGB, this.state.gray)
       this.props.setColorInfo({...this.state.colors[index], gray: this.state.gray})
     }).finally(() => {
       setTimeout(() => {
@@ -131,7 +125,6 @@ class ColorList extends Component<IColorsProps, IColorsState>{
     this.setState({
       gray
     })
-    this.props.setBackgroundColor(color.RGB, gray)
     this.props.setColorInfo({...color, gray})
   }
 

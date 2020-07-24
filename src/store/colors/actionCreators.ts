@@ -1,9 +1,5 @@
 import {COLORS_OPERATION} from './actionTypes';
-import {Colors} from "../../type";
-
-interface ColorInfoType extends Colors{
-  gray: number
-}
+import {ColorInfoType} from "../../type";
 
 export const setColorInfo = (info: ColorInfoType) => {
   return {
