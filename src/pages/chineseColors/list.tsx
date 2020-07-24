@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {fetchColors} from "../../api";
 import {Colors, TupleColor} from '../../type'
-import {colorsSort, rgb2hsv} from './utils'
+import {colorsSort} from './utils'
 import ICanvas from './canvas'
 import styled from "styled-components";
 import Loading from "../../components/loading";
@@ -10,7 +10,7 @@ import actions from '../../store/colors/actionCreators'
 
 interface IColorsProps {
   setBackgroundColor: (rgb: TupleColor<number, 3>, gray: number) => void
-  setColorInfo: (rgb: TupleColor<number, 3>, gray: number) => void
+  setColorInfo: (info: ColorInfoType) => void
 }
 
 interface IColorsState {
