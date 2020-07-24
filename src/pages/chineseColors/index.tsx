@@ -4,19 +4,17 @@ import ColorList from "./list";
 import ColorInfo from './information'
 import {ColorInfoType} from "../../type";
 import { connect } from 'react-redux'
+import {RouteComponentProps, withRouter} from 'react-router'
 
 interface IColorInfoStore {
   colorStore: ColorInfoType
 }
 
-interface IColorsProps{
+interface IColorsProps extends RouteComponentProps{
   colorInfo: ColorInfoType
 }
 
-interface IColorsState {
-  bgColor: string
-  gray: number
-}
+interface IColorsState {}
 
 const StyledColorsWrapper = styled.main`
   width: 100vw;
@@ -42,16 +40,9 @@ const mapStateToProps = (state: IColorInfoStore) => {
 }
 
 class ChineseColors extends Component<IColorsProps, IColorsState>{
-  constructor(props: IColorsProps) {
-    super(props);
-    this.state = {
-      bgColor: `rgb(${this.props.colorInfo.RGB.join(',')})`,
-      gray: 0
-    }
-  }
   render() {
     return (
-      <StyledColorsWrapper style={{backgroundColor: this.state.bgColor}}>
+      <StyledColorsWrapper style={{backgroundColor: `rgb(${this.props.colorInfo.RGB.join(',')})`}}>
         <StyledTitle style={{color: this.props.colorInfo.gray > 175 ? '#444444' : '#ffffff'}}>CHINESE COLORS</StyledTitle>
         <StyledMain>
           <ColorInfo />
@@ -62,4 +53,4 @@ class ChineseColors extends Component<IColorsProps, IColorsState>{
   }
 }
 
-export default connect(mapStateToProps)(ChineseColors)
+export default withRouter(connect(mapStateToProps)(ChineseColors))

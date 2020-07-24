@@ -1,17 +1,29 @@
 import React, {Component} from 'react'
+import { connect } from 'react-redux'
+import {ColorInfoType} from "../../type";
+
+interface IColorInfoStore {
+  colorStore: ColorInfoType
+}
 
 interface IColorInfoProps {
-
+  colorInfo: ColorInfoType
 }
 
 interface IColorInfoState {
 
 }
 
-class ColorInfo extends Component<IColorInfoProps, IColorInfoState>{
-  render() {
-    return <h1 style={{flex: 1}}>'Color Information'</h1>;
+const mapStateToProps = (state: IColorInfoStore) => {
+  return {
+    colorInfo: state.colorStore
   }
 }
 
-export default ColorInfo
+class ColorInfo extends Component<IColorInfoProps, IColorInfoState>{
+  render() {
+    return <h1 style={{flex: 1}}>{this.props.colorInfo.name}</h1>;
+  }
+}
+
+export default connect(mapStateToProps)(ColorInfo)
