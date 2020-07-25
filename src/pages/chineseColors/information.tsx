@@ -4,6 +4,7 @@ import {ColorInfoType, TupleColor} from "../../type";
 import styled from "styled-components";
 import CircleSVG from './components/svg'
 import {rgb2hsv} from './utils'
+import CountUp from 'react-countup';
 
 interface IColorInfoStore {
   colorStore: ColorInfoType
@@ -14,6 +15,13 @@ interface IColorInfoProps {
 }
 
 interface IColorInfoState {
+  r: number[],
+  g: number[],
+  b: number[],
+  h: number[],
+  s: number[],
+  v: number[],
+  gray: number[]
 
 }
 
@@ -64,6 +72,7 @@ const StyledHSV = styled.section`
 
 const StyledInfo = styled.section`
   box-sizing: border-box;
+  height: 650px;
   padding: 20px 5px 0;
   display: flex;
   flex-direction: column;
@@ -97,15 +106,39 @@ const mapStateToProps = (state: IColorInfoStore) => {
 }
 
 class ColorInfo extends PureComponent<IColorInfoProps, IColorInfoState>{
+  constructor(props: IColorInfoProps) {
+    super(props);
+    const info = this.props.colorInfo
+    const hsv = rgb2hsv(info.RGB)
+    this.state = {
+      r: [0, info.RGB[0]],
+      g: [0, info.RGB[1]],
+      b: [0, info.RGB[2]],
+      h: [0, hsv[0]],
+      s: [0, hsv[1]],
+      v: [0, hsv[2]],
+      gray: [0, info.gray]
+    }
+  }
+
+  componentDidUpdate (nextProps: IColorInfoProps, prevState: IColorInfoState) {}
 
   handleBackgroundColor = (gray: number, alpha: number): string => {
     return gray > 175 ? `rgba(0,0,0,${alpha})` : `rgba(255,255,255,${alpha})`
   }
 
-  renderHSV = (rgb: TupleColor<number, 3>): string => {
-    const hsv = rgb2hsv(rgb)
-    const [h, s, v] = hsv
-    return `${h}°, ${s}%, ${v}%`
+  renderCountUp = (rgb: TupleColor<number, 3>, type: string): React.ReactElement[] => {
+    let arr = type === 'RGB' ? rgb : rgb2hsv(rgb)
+    const unit = ['°', '%', '%']
+    return arr.map((item, index) => {
+      return (
+        <React.Fragment key={type.split('')[index]}>
+          <CountUp preserveValue end={item}/>
+          <span>{type === 'RGB' ? '' : unit[index]}{index < arr.length - 1 ? ', ' : ''}</span>
+        </React.Fragment>
+      )
+    })
+    // return `${h}°, ${s}%, ${v}%`
   }
 
   renderSVG = (cmyk: TupleColor<number, 4>): React.ReactElement[] => {
@@ -113,9 +146,9 @@ class ColorInfo extends PureComponent<IColorInfoProps, IColorInfoState>{
     const CMYKText = ['C', 'M', 'Y', 'K']
     return cmyk.map((item, index) => {
       return (
-        <aside key={item + index}>
+        <aside key={CMYKColor[index]}>
           <span>{CMYKText[index]}</span>
-          <CircleSVG color={CMYKColor[index]} percent={item}/>
+          <CircleSVG key={CMYKColor[index]} color={CMYKColor[index]} percent={item}/>
         </aside>
       )
     })
@@ -133,9 +166,13 @@ class ColorInfo extends PureComponent<IColorInfoProps, IColorInfoState>{
             <cite>{this.props.colorInfo.pinyin.toLocaleUpperCase()}</cite>
           </StyledInfo>
           <StyledInformation>
-            <cite>RGB: {this.props.colorInfo.RGB.join(', ')}</cite>
-            <cite>Gray scale: {this.props.colorInfo.gray}</cite>
-            <cite>HSV: {this.renderHSV(this.props.colorInfo.RGB)}</cite>
+            <cite>RGB: {this.renderCountUp(this.props.colorInfo.RGB, 'RGB')}
+            </cite>
+            <cite>Gray scale:
+              <CountUp key="gray" decimals={2}
+                       preserveValue
+                       end={this.props.colorInfo.gray}/></cite>
+            <cite>HSV: {this.renderCountUp(this.props.colorInfo.RGB, 'HSV')}</cite>
             <cite>HEX: {this.props.colorInfo.hex.toLocaleUpperCase()}</cite>
           </StyledInformation>
         </StyledMain>

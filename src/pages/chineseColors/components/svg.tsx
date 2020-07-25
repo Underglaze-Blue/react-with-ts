@@ -1,5 +1,6 @@
-import React,{PureComponent} from 'react'
+import React, {PureComponent, SVGProps} from 'react'
 import styled from "styled-components";
+import CountUp from "react-countup";
 
 interface ICircleProps {
   percent: number
@@ -15,14 +16,13 @@ interface ICircleState {
 const StyledSVG = styled.svg`
   circle {
     stroke-dashoffset: 0;
-    transition: all 15s linear;
-    stroke: rgba(54,52,51,.1);
+    transition: all 2s linear;
+    stroke: rgba(54,52,51,.2);
     stroke-width: 6px;
     transform: rotate(-90deg);
     transform-origin: 50% 50%;
     &.bar{
-      stroke: #FF9F1E;
-      strokeDashoffset: 0;
+      stroke-dashoffset: 0;
     }
   }
 `
@@ -33,7 +33,7 @@ const StyledSVGWrapper = styled.div`
   width: 80px;
   border-radius: 100%;
   position: relative;
-  &:after {
+  span {
     position: absolute;
     display: block;
     height: 80px;
@@ -51,6 +51,10 @@ const StyledSVGWrapper = styled.div`
 `
 
 class CircleSVG extends PureComponent<ICircleProps, ICircleState>{
+
+  static circle = React.createRef<SVGCircleElement>()
+
+
   constructor(props: ICircleProps) {
     super(props);
     const radius = 35
@@ -58,17 +62,30 @@ class CircleSVG extends PureComponent<ICircleProps, ICircleState>{
     this.state = {
       perimeter,
       radius,
-      strokeDashoffset: perimeter - this.props.percent / 100 * perimeter
+      strokeDashoffset: Math.PI * 2 * radius
     }
   }
+
+  componentDidUpdate() {
+    this.setState({
+      strokeDashoffset: this.state.perimeter - this.props.percent / 100 * this.state.perimeter
+    })
+  }
+
   render() {
     return (
       <>
         <StyledSVGWrapper data-percent={this.props.percent}>
           <StyledSVG id="svg" width="80" height="80">
-            <circle r={this.state.radius} cx="40" cy="40" fill="transparent" strokeDasharray={this.state.perimeter} strokeDashoffset="0"></circle>
-            <circle style={{strokeDashoffset: this.state.strokeDashoffset, stroke: this.props.color}} className="bar" r={this.state.radius} cx="40" cy="40" fill="transparent" strokeDasharray={this.state.perimeter} strokeDashoffset="0"></circle>
+            <circle r={this.state.radius} cx="40" cy="40" fill="transparent"></circle>
+            <circle ref={CircleSVG.circle}
+                    style={{strokeDashoffset: this.state.strokeDashoffset, stroke: this.props.color}} className="bar"
+                    r={this.state.radius} cx="40" cy="40"
+                    fill="transparent"
+                    strokeDasharray={this.state.perimeter}
+                    ></circle>
           </StyledSVG>
+          <span><CountUp preserveValue end={this.props.percent}/></span>
         </StyledSVGWrapper>
       </>
     );
