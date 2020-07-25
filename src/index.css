@@ -1,6 +1,7 @@
 
 @import '~antd/dist/antd.css';
 @import './common/css/reset.css';
+@import './common/css/fontface.css';
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
