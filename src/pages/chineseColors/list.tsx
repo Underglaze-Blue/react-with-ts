@@ -79,6 +79,7 @@ const StyledInformation = styled.aside`
 
 const StyledTitle = styled.strong`
   flex: 0 0 60%;
+  white-space: nowrap;
 `
 
 const StyledSection = styled.section`

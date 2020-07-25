@@ -162,7 +162,7 @@ class ColorInfo extends PureComponent<IColorInfoProps, IColorInfoState>{
             {this.renderSVG(this.props.colorInfo.CMYK)}
           </StyledHSV>
           <StyledInfo>
-            <StyledTitle>{this.props.colorInfo.name}</StyledTitle>
+            <StyledTitle style={{lineHeight: this.props.colorInfo.name.length < 5 ? '140px' : '110px'}}>{this.props.colorInfo.name}</StyledTitle>
             <cite>{this.props.colorInfo.pinyin.toLocaleUpperCase()}</cite>
           </StyledInfo>
           <StyledInformation>
