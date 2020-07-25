@@ -81,6 +81,8 @@ const StyledInfo = styled.section`
   cite{
     font-size: 20px;
     word-break: break-all;
+    font-family: 'Quostige';
+    font-weight: 400;
   }
 `
 
@@ -93,6 +95,7 @@ const StyledInformation = styled.section`
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-around;
+  font-family: 'VictorMono';
   cite{
     flex: 1;
     white-space: nowrap;

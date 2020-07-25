@@ -28,6 +28,8 @@ const StyledColorsWrapper = styled.main`
 const StyledTitle = styled.h1`
   padding: 2vh 0;
   transition: color 2s ease-in;
+  font-weight: bolder;
+  font-family: 'Omega-Sans';
 `
 
 const StyledMain = styled.main`
