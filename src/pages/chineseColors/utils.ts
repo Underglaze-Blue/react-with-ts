@@ -10,7 +10,7 @@ export const colorsSort = (colorsArr: Array<Colors>) => {
   return colorsArr
 }
 
-export const rgb2hsv = (rgb: TupleColor<number, 3>) => {
+export const rgb2hsv = (rgb: TupleColor<number, 3>) :TupleColor<number, 3> => {
   let [r, g, b] = rgb
   r = r / 255;
   g = g / 255;

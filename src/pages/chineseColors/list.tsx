@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {fetchColors} from "../../api";
 import {Colors, ColorInfoType} from '../../type'
 import {colorsSort} from './utils'
-import ICanvas from './canvas'
+import ICanvas from './components/canvas'
 import styled from "styled-components";
 import Loading from "../../components/loading";
 import {connect} from "react-redux";
@@ -79,6 +79,10 @@ const StyledInformation = styled.aside`
 
 const StyledTitle = styled.strong`
   flex: 0 0 60%;
+  white-space: nowrap;
+  span{
+    font-family: 'VictorMono';
+  }
 `
 
 const StyledSection = styled.section`
@@ -103,6 +107,9 @@ class ColorList extends Component<IColorsProps, IColorsState>{
     })
     fetchColors().then(res => {
       const tempColors = colorsSort(res as Array<Colors>)
+      // console.log(Array.from(new Set([''].concat(...tempColors.map(item => {
+      //   return [''].concat(item.name.split(''))
+      // })))).join(''))
       const index = parseInt(String(Math.random() * tempColors.length))
       const [r, g, b] = tempColors[index].RGB
       this.setState({
