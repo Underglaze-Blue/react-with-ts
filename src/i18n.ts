@@ -4,7 +4,7 @@ import LanguageDetector from 'i18next-browser-languagedetector';
 import common from "./locales/common";
 
 const resources = {
-  zh: {
+  'zh-CN': {
     translation: {
       "Welcome to React": "欢迎来到 React 和 react-i18next",
       ...common

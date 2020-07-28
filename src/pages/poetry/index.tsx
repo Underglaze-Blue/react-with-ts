@@ -50,6 +50,7 @@ class Poetry extends Component<IPoetryProps, IPoetryState> {
     }
   }
   _fetchPoetry = () => {
+    this.props.i18n.changeLanguage(this.props.i18n.language === 'zh-CN' ? 'en' : 'zh-CN')
     this.setState({
       loading: true
     })
