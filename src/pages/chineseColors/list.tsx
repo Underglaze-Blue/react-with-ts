@@ -135,14 +135,14 @@ class ColorList extends Component<IColorsProps, IColorsState>{
     this.props.setColorInfo({...color, gray})
   }
 
-  handleBackgroundColor = (gray: number, alpha: number): string => {
-    return gray > 175 ? `rgba(0,0,0,${alpha})` : `rgba(255,255,255,${alpha})`
+  handleBackgroundColor = (result: number, alpha: number): string => {
+    return result > 0 ? `rgba(0,0,0,${alpha})` : `rgba(255,255,255,${alpha})`
   }
 
   _renderColors = (colors: Array<Colors>): React.ReactElement[] => {
     return colors.map((item, index, arr) => {
       return (
-        <li style={{backgroundColor: this.handleBackgroundColor(this.state.gray, 0.2)}}
+        <li style={{backgroundColor: this.handleBackgroundColor(this.state.gray - 175, 0.2), boxShadow: `0 0 10px ${this.handleBackgroundColor(175 - this.state.gray, 0.1)}`}}
             onClick={() => {this.handleClick(item)}}
             key={item.name + item.pinyin}>
           <ICanvas cmyk={item.CMYK} rgb={item.RGB} />
@@ -171,7 +171,7 @@ class ColorList extends Component<IColorsProps, IColorsState>{
   render() {
     return (
       this.state.loading ? <Loading/> :
-        <StyledWrapper style={{backgroundColor: this.handleBackgroundColor(this.state.gray, 0.1)}}>
+        <StyledWrapper style={{backgroundColor: this.handleBackgroundColor(this.state.gray - 175, 0.1), boxShadow: `0 0 10px ${this.handleBackgroundColor(175 - this.state.gray, 0.1)}`}}>
           <ul>
             {this._renderColors(this.state.colors)}
           </ul>

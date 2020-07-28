@@ -126,8 +126,8 @@ class ColorInfo extends PureComponent<IColorInfoProps, IColorInfoState>{
 
   componentDidUpdate (nextProps: IColorInfoProps, prevState: IColorInfoState) {}
 
-  handleBackgroundColor = (gray: number, alpha: number): string => {
-    return gray > 175 ? `rgba(0,0,0,${alpha})` : `rgba(255,255,255,${alpha})`
+  handleBackgroundColor = (result: number, alpha: number): string => {
+    return result > 0 ? `rgba(0,0,0,${alpha})` : `rgba(255,255,255,${alpha})`
   }
 
   renderCountUp = (rgb: TupleColor<number, 3>, type: string): React.ReactElement[] => {
@@ -160,7 +160,7 @@ class ColorInfo extends PureComponent<IColorInfoProps, IColorInfoState>{
   render() {
     return(
       <StyledWrapper>
-        <StyledMain style={{backgroundColor: this.handleBackgroundColor(this.props.colorInfo.gray, 0.1)}}>
+        <StyledMain style={{backgroundColor: this.handleBackgroundColor(this.props.colorInfo.gray - 175, 0.1), boxShadow: `0 0 10px ${this.handleBackgroundColor(175 - this.props.colorInfo.gray, 0.1)}`}}>
           <StyledHSV>
             {this.renderSVG(this.props.colorInfo.CMYK)}
           </StyledHSV>

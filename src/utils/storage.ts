@@ -32,10 +32,11 @@ class LocalData implements LocalStorageType{
       ['__writeTime__']: +now,
       ['__period__']: period ? this.handlePeriod(period, now) : null
     }
-    localStorage.setItem(name, JSON.stringify(saveData))
+    localStorage.setItem(`${name}__with__timeliness__`, JSON.stringify(saveData))
   }
   get (name: string) {
-    let dataJSON = localStorage.getItem(name)
+    if (!this.isNotExist(localStorage.getItem(name))) return localStorage.getItem(name);
+    let dataJSON = localStorage.getItem(`${name}__with__timeliness__`)
     if(this.isNotExist(dataJSON)) {
       return null
     }
@@ -44,7 +45,7 @@ class LocalData implements LocalStorageType{
       return storageData.data
     }
     if(this.isOutPeriod(storageData)) {
-      this.remove(name)
+      this.remove(`${name}__with__timeliness__`)
       storageData.data = null
     }
     return storageData.data
@@ -53,6 +54,7 @@ class LocalData implements LocalStorageType{
     localStorage.clear()
   }
   remove (name: string) {
+    localStorage.removeItem(`${name}__with__timeliness__`)
     localStorage.removeItem(name)
   }
 }
