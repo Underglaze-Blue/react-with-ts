@@ -1,4 +1,4 @@
-import React, {PureComponent, SVGProps} from 'react'
+import React, {PureComponent} from 'react'
 import styled from "styled-components";
 import CountUp from "react-countup";
 

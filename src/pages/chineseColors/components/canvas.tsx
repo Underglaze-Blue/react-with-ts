@@ -68,7 +68,7 @@ class ICanvas extends Component<ICanvasProps, ICanvasState> {
   render() {
     return (
       <StyledDiv>
-        <img src={require('../images/bg.png')}/>
+        <img alt='bg' src={require('../images/bg.png')}/>
         <canvas ref={ICanvas.canvas} width={350} height={60} />
       </StyledDiv>
     )
