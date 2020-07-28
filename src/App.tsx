@@ -102,7 +102,6 @@ class App extends Component<IAppProps, IAppState> {
 
   componentDidMount() {
     fetchBingHPImageArchive(ImageCount).then(res => {
-      console.log(res)
       this.setState({
         bgImage: ((res as PromiseImage).images)[parseInt(String(Math.random() * ImageCount))].url
       })

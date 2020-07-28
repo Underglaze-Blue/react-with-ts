@@ -3,7 +3,10 @@ import {fetchPoetry} from '../../api'
 import styled from "styled-components";
 import {Button} from 'antd'
 
-interface IPoetryProps {}
+import {WithTranslation, withTranslation} from 'react-i18next';
+import {RouteComponentProps, withRouter} from "react-router";
+
+interface IPoetryProps extends WithTranslation, RouteComponentProps{}
 
 interface IPoetryCommon {
   content: string
@@ -36,7 +39,7 @@ const StyledSpan = styled.span`
   font-size: 14px;
 `
 
-class Index extends Component<IPoetryProps, IPoetryState> {
+class Poetry extends Component<IPoetryProps, IPoetryState> {
   constructor(props:IPoetryProps) {
     super(props);
     this.state  = {
@@ -65,6 +68,7 @@ class Index extends Component<IPoetryProps, IPoetryState> {
     this._fetchPoetry()
   }
   render(): React.ReactElement {
+    const {t} = this.props
     return (
       <PoetryMain>
         <aside>
@@ -74,9 +78,10 @@ class Index extends Component<IPoetryProps, IPoetryState> {
         <Button loading={this.state.loading} onClick={this._fetchPoetry} type="primary">
           刷新
         </Button>
+        <span>{t('loading')}</span>
       </PoetryMain>
     );
   }
 }
 
-export default Index
+export default withRouter(withTranslation()(Poetry))
