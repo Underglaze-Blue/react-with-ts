@@ -11,3 +11,10 @@ export interface Colors {
 export interface ColorInfoType extends Colors{
   gray: number
 }
+
+export interface LocalStorageType {
+  save: (name: string, data: any, period?: number | Date) => void
+  get: (name: string) => any
+  clear: () => void
+  remove: (name: string) => void
+}

@@ -1,6 +1,5 @@
 import React, {Component, ComponentClass} from 'react'
 import styled from "styled-components"
-// import { BrowserRouter as Router, Route, Link } from "react-router-dom"
 import {Switch, Router, Route, Redirect} from 'react-router'
 import { createBrowserHistory, History } from 'history'
 import IGallery from "./pages/gallery"
@@ -10,6 +9,8 @@ import Poetry from "./pages/poetry"
 import Menu from './pages/menu'
 import ChineseColors from './pages/chineseColors'
 import {fetchBingHPImageArchive} from './api'
+import LocalData from './utils/storage'
+import {LocalStorageType} from './type'
 
 const ImageCount = 8
 
@@ -92,18 +93,29 @@ const Routes: Array<RouteTypes> = [
 ]
 
 class App extends Component<IAppProps, IAppState> {
+  storage: LocalStorageType
   constructor(props: IAppProps) {
     super(props)
     this.state = {
       history: createBrowserHistory(),
       bgImage: ''
     }
+    this.storage = new LocalData()
   }
 
   componentDidMount() {
-    fetchBingHPImageArchive(ImageCount).then(res => {
+    if (this.storage.get('images') && this.storage.get('images').length) {
       this.setState({
-        bgImage: ((res as PromiseImage).images)[parseInt(String(Math.random() * ImageCount))].url
+        bgImage: this.storage.get('images')[parseInt(String(Math.random() * ImageCount))].url
+      })
+      return
+    }
+    fetchBingHPImageArchive(ImageCount).then(res => {
+      const images = (res as PromiseImage).images
+      const period = new Date(new Date().setDate(new Date().getDate() + 1)).setHours(0,0,0,0)
+      this.storage.save('images', images, period)
+      this.setState({
+        bgImage: images[parseInt(String(Math.random() * ImageCount))].url
       })
     })
   }

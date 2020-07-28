@@ -68,17 +68,17 @@ class Poetry extends Component<IPoetryProps, IPoetryState> {
     this._fetchPoetry()
   }
   render(): React.ReactElement {
-    const {t} = this.props
+    const {t, i18n} = this.props
     return (
       <PoetryMain>
         <aside>
           <StyledH3>{this.state.origin}<StyledSpan>{this.state.author && `『${this.state.author}』`}</StyledSpan></StyledH3>
           <p>{this.state.content}</p>
         </aside>
-        <Button loading={this.state.loading} onClick={this._fetchPoetry} type="primary">
+        <Button loading={this.state.loading} onClick={() => {this._fetchPoetry()}} type="primary">
           刷新
         </Button>
-        <span>{t('loading')}</span>
+        <span>{t('loading')}</span><span>{i18n.language}</span>
       </PoetryMain>
     );
   }
