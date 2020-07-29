@@ -42,7 +42,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "eslint": "eslint src --fix --ext .ts,.tsx ",
-    "commit": "git-cz"
+    "commit": "git-cz",
+    "precommit": "lint-staged"
   },
   "husky": {
     "hooks": {
