@@ -22,6 +22,11 @@ module.exports = {
     // 自定义你的规则
     '@typescript-eslint/explicit-member-accessibility': 'off',
     '@typescript-eslint/no-invalid-this': 'off',
+    "@typescript-eslint/no-loss-of-precision": 0,
+    "default-case-last": 0,
+    "no-promise-executor-return": 0,
+    "no-unreachable-loop": 0,
+    "no-useless-backreference": 0,
     'indent': [ 'error', 2, { SwitchCase: 1 } ], // 强制使用一致的缩进
     'arrow-spacing': [
       2,

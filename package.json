@@ -20,7 +20,6 @@
     "@typescript-eslint/parser": "^3.7.1",
     "antd": "^4.4.2",
     "axios": "^0.19.2",
-    "eslint": "^7.5.0",
     "eslint-config-alloy": "^3.7.4",
     "eslint-plugin-react": "^7.20.5",
     "http-proxy-middleware": "^1.0.5",
@@ -48,17 +47,6 @@
     "lint": "tsc src/**/*.ts",
     "precommit": "lint-staged"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "src/**/*.{ts,tsx,*js,*jsx}": [
-      "eslint --fix",
-      "git add"
-    ]
-  },
   "eslintConfig": {
     "extends": "react-app"
   },
@@ -73,9 +61,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "husky": "^4.2.5",
-    "lint-staged": "^10.2.11"
   }
 }
