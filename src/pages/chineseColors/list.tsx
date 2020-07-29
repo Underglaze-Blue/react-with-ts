@@ -1,11 +1,11 @@
 import React, {Component} from 'react'
-import {fetchColors} from "../../api";
+import {fetchColors} from '../../api'
 import {Colors, ColorInfoType} from '../../type'
 import {colorsSort} from './utils'
 import ICanvas from './components/canvas'
-import styled from "styled-components";
-import Loading from "../../components/loading";
-import {connect} from "react-redux";
+import styled from 'styled-components'
+import Loading from '../../components/loading'
+import {connect} from 'react-redux'
 import actions from '../../store/colors/actionCreators'
 
 interface IColorsProps {
@@ -113,7 +113,7 @@ class ColorList extends Component<IColorsProps, IColorsState>{
       //   return [''].concat(item.name.split(''))
       // })))).join(''))
       // 随机渲染一个颜色
-      const index = parseInt(String(Math.random() * tempColors.length))
+      const index = parseInt(String(Math.random() * tempColors.length), 10)
       const [r, g, b] = tempColors[index].RGB
       this.setState({
         colors: tempColors,
@@ -159,8 +159,8 @@ class ColorList extends Component<IColorsProps, IColorsState>{
     return colors.map((item, index, arr) => {
       return (
         <li style={this.handleStyle(0.2)}
-            onClick={() => {this.handleClick(item)}}
-            key={item.name + item.pinyin}>
+          onClick={() => {this.handleClick(item)}}
+          key={item.name + item.pinyin}>
           <ICanvas cmyk={item.CMYK} rgb={item.RGB} />
           <StyledArticle>
             <StyledInformation className="font-small">
@@ -191,9 +191,9 @@ class ColorList extends Component<IColorsProps, IColorsState>{
           <ul>
             {this._renderColors(this.state.colors)}
           </ul>
-          {/*<ICanvas cmyk={[255,255,255,255]} rgb={[255,255,255]}/>*/}
+          {/* <ICanvas cmyk={[255,255,255,255]} rgb={[255,255,255]}/>*/}
         </StyledWrapper>
-    );
+    )
   }
 }
 
