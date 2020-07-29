@@ -9,8 +9,8 @@ module.exports = {
     //
     browser: true,
     "commonjs": true,
-    "es6": true
-    // node: true,
+    "es6": true,
+    node: true
     // mocha: true,
     // jest: true,
     // jquery: true

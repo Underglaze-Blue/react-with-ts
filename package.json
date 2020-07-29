@@ -42,6 +42,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "eslint": "eslint src --fix --ext .ts,.tsx ",
+    "eject": "react-scripts eject",
     "commit": "git-cz"
   },
   "husky": {
