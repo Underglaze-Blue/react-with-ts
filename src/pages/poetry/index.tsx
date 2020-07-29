@@ -49,6 +49,8 @@ class Poetry extends Component<IPoetryProps, IPoetryState> {
       loading: false
     }
   }
+
+  // 获取数据
   _fetchPoetry = () => {
     this.props.i18n.changeLanguage(this.props.i18n.language === 'zh-CN' ? 'en' : 'zh-CN')
     this.setState({
@@ -65,9 +67,11 @@ class Poetry extends Component<IPoetryProps, IPoetryState> {
       })
     })
   }
+
   componentWillMount() {
     this._fetchPoetry()
   }
+
   render(): React.ReactElement {
     const {t, i18n} = this.props
     return (

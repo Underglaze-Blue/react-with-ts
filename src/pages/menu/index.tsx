@@ -110,6 +110,7 @@ class Menu extends Component<IMenuProps, IMenuState>{
     }
   }
 
+  // 获取颜色
   handleGetColors = () => {
     fetchColors().then(res => {
       this.setState({
@@ -126,6 +127,7 @@ class Menu extends Component<IMenuProps, IMenuState>{
     this.props.history.push(path)
   }
 
+  // 渲染菜单列表
   _renderMenuList  = (): React.ReactElement[] => {
     return MenuList.map(item => {
       const color = randomBackgroundColor(item.name, this.state.colors as Array<Colors>)

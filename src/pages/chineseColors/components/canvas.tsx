@@ -23,9 +23,6 @@ const StyledDiv = styled.div`
 `
 
 class ICanvas extends Component<ICanvasProps, ICanvasState> {
-  // constructor(props: ICanvasProps) {
-  //   super(props);
-  // }
   static canvas = React.createRef<HTMLCanvasElement>()
 
   componentDidMount() {
@@ -33,15 +30,21 @@ class ICanvas extends Component<ICanvasProps, ICanvasState> {
     let context = (canvas as HTMLCanvasElement).getContext('2d') as CanvasRenderingContext2D
     const x = 50
     const y = 15
+
     const CMYKColor = ['#0093D3', '#CC006B', '#FFF10C', '#333333']
     const CMYKText = ['C', 'M', 'Y', 'K']
+
     const RGBColor = ['red', 'green', 'blue']
     const RGBText = ['R', 'G', 'B']
+
     const lineX = x * this.props.cmyk.length + 25
+
     context.lineWidth = 4;
     context.font = "10px sans-serif"
     context.fillStyle = '#ffffff'
     context.lineCap = 'round'
+
+    // cmyk环渲染
     this.props.cmyk.forEach((item, index) => {
       const endAngle = item === 0 ? (1.5 * Math.PI) : item === 100 ? (2 * Math.PI) : ((-90 + (360 * item / 100)) * (Math.PI / 180));
       context.beginPath();
@@ -51,8 +54,10 @@ class ICanvas extends Component<ICanvasProps, ICanvasState> {
       // context.strokeStyle = 'rgba(54,52,51,.1)';
       context.stroke();
     })
+
+    // rgb线条渲染
     this.props.rgb.forEach((item, index) => {
-      const coefficient = 350 - lineX
+      const coefficient = 350 - lineX // 线条系数
       const lineToX = (lineX + coefficient * (item / 255))
       const yCoordinate= y * (index + 1) + 2 * index
       context.beginPath();

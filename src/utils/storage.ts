@@ -1,6 +1,16 @@
 import {isDate, isNumber} from './typesJudge'
 import {LocalStorageType} from "../type";
 
+// localstorage
+/*
+* save fn
+* get fn
+* clear fn
+* remove fn
+* name: 储存名
+* data: 数据
+* period： 过期时间，不设置默认永久
+* */
 class LocalData implements LocalStorageType{
   handlePeriod: (period: number | Date, now: Date) => number | null
   isNotExist: (data: any) => boolean

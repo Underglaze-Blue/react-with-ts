@@ -17,7 +17,7 @@ interface IColorsState {
   gray: number
   loading: boolean
 }
-
+// 色卡列表
 const StyledWrapper = styled.div`
   flex: 0 0 70vw;
   margin-right: 5vw;
@@ -62,7 +62,7 @@ const StyledWrapper = styled.div`
    }
   }
 `
-
+// 色卡信息
 const StyledArticle = styled.article`
   display: flex;
   color: #ffffff;
@@ -101,21 +101,25 @@ class ColorList extends Component<IColorsProps, IColorsState>{
     }
   }
 
+  // 获取色卡json
   handleGetColors = () => {
     this.setState({
       loading: true
     })
     fetchColors().then(res => {
       const tempColors = colorsSort(res as Array<Colors>)
+      // 返回所有颜色包含的汉字
       // console.log(Array.from(new Set([''].concat(...tempColors.map(item => {
       //   return [''].concat(item.name.split(''))
       // })))).join(''))
+      // 随机渲染一个颜色
       const index = parseInt(String(Math.random() * tempColors.length))
       const [r, g, b] = tempColors[index].RGB
       this.setState({
         colors: tempColors,
         gray: (r * 30 + g * 59 + b * 11) / 100
       })
+      // redux
       this.props.setColorInfo({...this.state.colors[index], gray: this.state.gray})
     }).finally(() => {
       setTimeout(() => {
@@ -126,19 +130,23 @@ class ColorList extends Component<IColorsProps, IColorsState>{
     })
   }
 
+  // 色卡点击
   handleClick = (color: Colors) => {
     const [r, g, b] = color.RGB
     const gray = (r * 30 + g * 59 + b * 11) / 100
     this.setState({
       gray
     })
+    // redux
     this.props.setColorInfo({...color, gray})
   }
 
+  // background
   handleBackgroundColor = (result: number, alpha: number): string => {
     return result > 0 ? `rgba(0,0,0,${alpha})` : `rgba(255,255,255,${alpha})`
   }
 
+  // style
   handleStyle = (alpha: number) => {
     return {
       backgroundColor: this.handleBackgroundColor(this.state.gray - 175, alpha),
@@ -146,6 +154,7 @@ class ColorList extends Component<IColorsProps, IColorsState>{
     }
   }
 
+  // 渲染色卡
   _renderColors = (colors: Array<Colors>): React.ReactElement[] => {
     return colors.map((item, index, arr) => {
       return (

@@ -124,12 +124,12 @@ class ColorInfo extends PureComponent<IColorInfoProps, IColorInfoState>{
     }
   }
 
-  componentDidUpdate (nextProps: IColorInfoProps, prevState: IColorInfoState) {}
-
+  // background
   handleBackgroundColor = (result: number, alpha: number): string => {
     return result > 0 ? `rgba(0,0,0,${alpha})` : `rgba(255,255,255,${alpha})`
   }
 
+  // 数字翻牌器
   renderCountUp = (rgb: TupleColor<number, 3>, type: string): React.ReactElement[] => {
     let arr = type === 'RGB' ? rgb : rgb2hsv(rgb)
     const unit = ['°', '%', '%']
@@ -143,7 +143,7 @@ class ColorInfo extends PureComponent<IColorInfoProps, IColorInfoState>{
     })
     // return `${h}°, ${s}%, ${v}%`
   }
-
+  // 渲染 svg cmyk环
   renderSVG = (cmyk: TupleColor<number, 4>): React.ReactElement[] => {
     const CMYKColor = ['#0093D3', '#CC006B', '#FFF10C', '#333333']
     const CMYKText = ['C', 'M', 'Y', 'K']

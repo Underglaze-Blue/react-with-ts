@@ -1,5 +1,6 @@
 import {Colors, TupleColor} from '../../type'
 
+// 颜色排序
 export const colorsSort = (colorsArr: Array<Colors>) => {
   colorsArr.sort((prev, next) =>{
     if (rgb2hsv(prev.RGB)[0] === rgb2hsv(next.RGB)[0])
