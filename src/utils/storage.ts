@@ -7,9 +7,9 @@ import {LocalStorageType} from '../type'
 * get fn
 * clear fn
 * remove fn
-* name: 储存名
-* data: 数据
-* period： 过期时间，不设置默认永久
+* @params name: 储存名
+* @params data: 数据
+* @params period： 过期时间，不设置默认永久
 * */
 class LocalData implements LocalStorageType{
   handlePeriod: (period: number | Date, now: Date) => number | null
