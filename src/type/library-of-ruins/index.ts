@@ -47,26 +47,26 @@ export type MinNumber = number
 
 export type Cost = 0 | 1 | 2 | 3 | 4 | 5
 
-export type Card_Dice = {
+export interface Card_Dice {
   type: Dice_Type
   maxNumber: MaxNumber
   minNumber: MinNumber
   effect: Buff_Effect | Debuff_Effect
 }
 
-export type Buff_Effect = {
+export interface Buff_Effect {
   name: BUFF
   level: number
   target: EFFECT_TARGET
 }
 
-export type Debuff_Effect = {
+export interface Debuff_Effect {
   name: DE_BUFF
   level: number
   target: EFFECT_TARGET
 }
 
-export type Card_Type = {
+export interface Card_Type {
   cost: Cost
   dices: Card_Dice[]
   effect: Buff_Effect | Debuff_Effect

@@ -26,8 +26,8 @@ class ToggleButton extends React.Component<IToggleButtonProps, IToggleButtonStat
     this.state = {
       isSelect: false
     }
-  } 
-  
+  }
+
   _toggle = () => {
     this.setState({
       isSelect: !this.state.isSelect

@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { ImageUrl } from '../../models'
 import {Modal, Button, Card} from 'antd'
 import {download} from '../../utils'
-import styled from "styled-components";
+import styled from 'styled-components'
 
 interface IImageStore {
   imageStore: Array<string>

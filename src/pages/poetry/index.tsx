@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import {fetchPoetry} from '../../api'
-import styled from "styled-components";
+import styled from 'styled-components'
 import {Button} from 'antd'
 
-import {WithTranslation, withTranslation} from 'react-i18next';
-import {RouteComponentProps, withRouter} from "react-router";
+import {WithTranslation, withTranslation} from 'react-i18next'
+import {RouteComponentProps, withRouter} from 'react-router'
 
 interface IPoetryProps extends WithTranslation, RouteComponentProps{}
 
@@ -41,8 +41,8 @@ const StyledSpan = styled.span`
 
 class Poetry extends Component<IPoetryProps, IPoetryState> {
   constructor(props:IPoetryProps) {
-    super(props);
-    this.state  = {
+    super(props)
+    this.state = {
       content: '',
       origin: '',
       author: '',
@@ -85,7 +85,7 @@ class Poetry extends Component<IPoetryProps, IPoetryState> {
         </Button>
         <span>{t('loading')}</span><span>{i18n.language}</span>
       </PoetryMain>
-    );
+    )
   }
 }
 

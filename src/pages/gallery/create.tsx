@@ -5,7 +5,7 @@ import actions from '../../store/gallery/actionCreators'
 import {fetchRandomImage} from '../../api'
 import {ImageResult} from '../../models'
 import { connect } from 'react-redux'
-import styled from "styled-components";
+import styled from 'styled-components'
 
 interface IHelloProps {
   message?: string
@@ -63,14 +63,14 @@ class Create extends Component<IHelloProps, IHelloState> {
     this.props.RemoveImage()
   }
   render() {
-    let count = (this.props.imageStore as Array<string>).length
+    const count = (this.props.imageStore as Array<string>).length
     return (
       <article>
         <h1 className="color-white">{this.state.message}{count >= 5 && '🐂🍺'}...</h1>
         <Badge showZero count={count}>
           <h2 className="color-white">Gallery Length...</h2>
         </Badge>
-        <aside style={{display: "flex"}}>
+        <aside style={{display: 'flex'}}>
           <StyledButton type="primary" danger disabled={count <= 0} onClick={() => {
             this.handleButtonClick(false)
           }}>

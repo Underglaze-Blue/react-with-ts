@@ -1,11 +1,11 @@
 import React, {Component, ComponentClass} from 'react'
-import styled from "styled-components"
+import styled from 'styled-components'
 import {Switch, Router, Route, Redirect} from 'react-router'
 import { createBrowserHistory, History } from 'history'
-import IGallery from "./pages/gallery"
+import IGallery from './pages/gallery'
 import LibraryApp from './pages/library'
 import UserApp from './pages/user'
-import Poetry from "./pages/poetry"
+import Poetry from './pages/poetry'
 import Menu from './pages/menu'
 import ChineseColors from './pages/chineseColors'
 import {fetchBingHPImageArchive} from './api'
@@ -67,29 +67,29 @@ interface RouteTypes {
 
 const Routes: Array<RouteTypes> = [
   {
-    path: "/menu",
+    path: '/menu',
     component: Menu
   },
   {
-    path: "/gallery",
+    path: '/gallery',
     component: IGallery
   },
   {
-    path: "/library",
+    path: '/library',
     component: LibraryApp
   },
   {
-    path: "/user",
+    path: '/user',
     component: UserApp
   },
   {
-    path: "/poetry",
+    path: '/poetry',
     component: Poetry
   },
   {
-    path: "/cn-colors",
+    path: '/cn-colors',
     component: ChineseColors
-  },
+  }
 ]
 
 class App extends Component<IAppProps, IAppState> {

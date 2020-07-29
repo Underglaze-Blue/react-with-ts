@@ -1,4 +1,4 @@
-import {IMAGE_OPERATION} from './actionTypes';
+import {IMAGE_OPERATION} from './actionTypes'
 import {ImageUrl} from '../../models'
 export const AddImage = (url: ImageUrl) => {
   return {

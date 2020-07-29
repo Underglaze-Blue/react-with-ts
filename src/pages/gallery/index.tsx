@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
-import Create from "./create";
-import Gallery from "./gallery";
+import Create from './create'
+import Gallery from './gallery'
 
 interface IGalleryProps {
 
@@ -17,7 +17,7 @@ class IGallery extends Component<IGalleryProps, IGalleryState>{
         <Create message="Click To Create Gallery"/>
         <Gallery/>
       </>
-    );
+    )
   }
 }
 

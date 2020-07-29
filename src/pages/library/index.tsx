@@ -1,8 +1,8 @@
 import React, {Component} from 'react'
-import { 
-  Row, 
+import {
+  Row,
   Col,
-  Input 
+  Input
 } from 'antd'
 import styled from 'styled-components'
 import { StoreValue } from 'antd/lib/form/interface'

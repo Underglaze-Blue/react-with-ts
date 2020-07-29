@@ -1,14 +1,12 @@
 import React, {Component} from 'react'
-import styled from "styled-components";
+import styled from 'styled-components'
 import {createBrowserHistory, History} from 'history'
 import { withRouter, RouteComponentProps } from 'react-router'
 import {randomBackgroundColor} from './utils'
-import {fetchColors} from "../../api";
+import {fetchColors} from '../../api'
 import {Colors} from '../../type'
 
-interface IMenuProps extends RouteComponentProps {
-
-}
+type IMenuProps = RouteComponentProps
 
 interface IMenuState {
   history: History,
@@ -40,7 +38,7 @@ const MenuList: Array<MenuItem> = [
   {
     name: 'Chinese Colors',
     path: 'cn-colors'
-  },
+  }
 
 ]
 
@@ -103,7 +101,7 @@ const StyledLi = styled.li`
 
 class Menu extends Component<IMenuProps, IMenuState>{
   constructor(props:IMenuProps) {
-    super(props);
+    super(props)
     this.state = {
       history: createBrowserHistory(),
       colors: []
@@ -128,7 +126,7 @@ class Menu extends Component<IMenuProps, IMenuState>{
   }
 
   // 渲染菜单列表
-  _renderMenuList  = (): React.ReactElement[] => {
+  _renderMenuList = (): React.ReactElement[] => {
     return MenuList.map(item => {
       const color = randomBackgroundColor(item.name, this.state.colors as Array<Colors>)
       const liStyle = {

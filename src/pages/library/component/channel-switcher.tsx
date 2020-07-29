@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {
   Form,
-  Switch  
+  Switch
 } from 'antd'
 import styled from 'styled-components'
 import { StoreValue } from 'antd/lib/form/interface'
@@ -39,7 +39,7 @@ class ChannelSwitcher extends Component<IImageInfoProps, IImageInfoState> {
       data: (data as IChannelSwitcher)
     }
   }
-  
+
 
   _onValuesChange = (changedValues: StoreValue, allValues: StoreValue) => {
     const { onImageInfoChange } = this.props
@@ -51,16 +51,16 @@ class ChannelSwitcher extends Component<IImageInfoProps, IImageInfoState> {
     console.log(data)
     return (
       <InfoApp>
-          <Form initialValues={data} onValuesChange={this._onValuesChange}>
-            <Form.Item label="R channel" name="RChannel" valuePropName="checked">
-              <Switch />
-            </Form.Item>
-            <Form.Item label="G channel" name="GChannel" valuePropName="checked">
-              <Switch />
-            </Form.Item>
-            <Form.Item label="B channel" name="BChannel" valuePropName="checked">
-              <Switch />
-            </Form.Item>
+        <Form initialValues={data} onValuesChange={this._onValuesChange}>
+          <Form.Item label="R channel" name="RChannel" valuePropName="checked">
+            <Switch />
+          </Form.Item>
+          <Form.Item label="G channel" name="GChannel" valuePropName="checked">
+            <Switch />
+          </Form.Item>
+          <Form.Item label="B channel" name="BChannel" valuePropName="checked">
+            <Switch />
+          </Form.Item>
         </Form>
       </InfoApp>
     )

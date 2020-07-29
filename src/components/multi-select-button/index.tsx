@@ -4,7 +4,7 @@ import styled from 'styled-components'
 
 const ToggleButtonGroup = styled.div`
 `
-export type MultipleButtonProps = {
+export interface MultipleButtonProps {
   name: string
   value: any
 }

@@ -2,14 +2,14 @@
 // 节流(ts)
 export default class Throttle {
   private timer: number | undefined
-  private stop: boolean = false
-  private death: boolean = false
+  private stop = false
+  private death = false
   /**
    * @param func 需要包装的函数
    * @param delay 延迟时间，单位ms
    * @param immediate 是否默认执行一次(第一次不延迟)
    */
-  public use (func: Function, delay: number, immediate: boolean = false): Function {
+  public use (func: Function, delay: number, immediate = false): Function {
     let flag = true
     const self = this
     return (...args: any) => {
@@ -41,7 +41,7 @@ export default class Throttle {
   public destroy() {
     this.death = true
     this.stop = true
-    if (!!this.timer) {
+    if (this.timer) {
       clearTimeout(this.timer)
       this.timer = undefined
     }

@@ -1,6 +1,6 @@
 // 获取一个 Ajax 实例
-import request from "./axios.config";
-import {BaseResponse, InstanceType} from "./axios.type";
+import request from './axios.config'
+import {BaseResponse, InstanceType} from './axios.type'
 
 // Ajax 实体
 class Instance implements InstanceType{
@@ -9,15 +9,15 @@ class Instance implements InstanceType{
       url,
       method: 'get',
       params
-    });
+    })
   }
   post <T>(url: string, data:object = {}): Promise<BaseResponse<T>> {
     return request({
       url,
       method: 'post',
       data
-    });
+    })
   }
-};
+}
 
-export default new Instance();
+export default new Instance()

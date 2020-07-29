@@ -1,5 +1,5 @@
-import {COLORS_OPERATION} from './actionTypes';
-import {ColorInfoType} from "../../type";
+import {COLORS_OPERATION} from './actionTypes'
+import {ColorInfoType} from '../../type'
 
 export const setColorInfo = (info: ColorInfoType) => {
   return {

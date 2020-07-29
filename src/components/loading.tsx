@@ -1,6 +1,6 @@
-import React, {Component} from "react";
+import React, {Component} from 'react'
 
-import styled, {keyframes} from "styled-components";
+import styled, {keyframes} from 'styled-components'
 
 interface ILoadingProps {
 
@@ -96,11 +96,11 @@ class Loading extends Component<ILoadingProps, ILoadingState>{
       <StyledLoadingWrapper>
         <StyledDivWrapper>
           <StyledDivMain>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
+            <div />
+            <div />
+            <div />
+            <div />
+            <div />
           </StyledDivMain>
         </StyledDivWrapper>
       </StyledLoadingWrapper>

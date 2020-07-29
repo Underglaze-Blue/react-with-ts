@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {
   Form,
-  InputNumber  
+  InputNumber
 } from 'antd'
 import styled from 'styled-components'
 import { StoreValue } from 'antd/lib/form/interface'
@@ -45,19 +45,19 @@ class ImageInfo extends Component<IImageInfoProps, IImageInfoState> {
     const { data } = this.state
     return (
       <InfoApp>
-          <Form initialValues={data} onValuesChange={this._onValuesChange}>
-            <Form.Item label="R" name="R">
-              <InputNumber min={0} max={255} step={1} />
-            </Form.Item>
-            <Form.Item label="G" name="G">
-              <InputNumber min={0} max={255} step={1} />
-            </Form.Item>
-            <Form.Item label="B" name="B">
-              <InputNumber min={0} max={255} step={1} />
-            </Form.Item>
-            <Form.Item label="A" name="alpha">
-              <InputNumber min={0} max={1} step={0.01} />
-            </Form.Item>
+        <Form initialValues={data} onValuesChange={this._onValuesChange}>
+          <Form.Item label="R" name="R">
+            <InputNumber min={0} max={255} step={1} />
+          </Form.Item>
+          <Form.Item label="G" name="G">
+            <InputNumber min={0} max={255} step={1} />
+          </Form.Item>
+          <Form.Item label="B" name="B">
+            <InputNumber min={0} max={255} step={1} />
+          </Form.Item>
+          <Form.Item label="A" name="alpha">
+            <InputNumber min={0} max={1} step={0.01} />
+          </Form.Item>
         </Form>
       </InfoApp>
     )

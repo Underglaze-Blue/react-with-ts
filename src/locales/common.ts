@@ -1,3 +1,3 @@
 export default {
-  'loading': '正在加载...'
+  loading: '正在加载...'
 }
