@@ -1,10 +1,10 @@
 import React, {PureComponent} from 'react'
 import { connect } from 'react-redux'
-import {ColorInfoType, TupleColor} from "../../type";
-import styled from "styled-components";
+import {ColorInfoType, TupleColor} from '../../type'
+import styled from 'styled-components'
 import CircleSVG from './components/svg'
 import {rgb2hsv} from './utils'
-import CountUp from 'react-countup';
+import CountUp from 'react-countup'
 
 interface IColorInfoStore {
   colorStore: ColorInfoType
@@ -110,7 +110,7 @@ const mapStateToProps = (state: IColorInfoStore) => {
 
 class ColorInfo extends PureComponent<IColorInfoProps, IColorInfoState>{
   constructor(props: IColorInfoProps) {
-    super(props);
+    super(props)
     const info = this.props.colorInfo
     const hsv = rgb2hsv(info.RGB)
     this.state = {
@@ -131,7 +131,7 @@ class ColorInfo extends PureComponent<IColorInfoProps, IColorInfoState>{
 
   // 数字翻牌器
   renderCountUp = (rgb: TupleColor<number, 3>, type: string): React.ReactElement[] => {
-    let arr = type === 'RGB' ? rgb : rgb2hsv(rgb)
+    const arr = type === 'RGB' ? rgb : rgb2hsv(rgb)
     const unit = ['°', '%', '%']
     return arr.map((item, index) => {
       return (
@@ -177,8 +177,8 @@ class ColorInfo extends PureComponent<IColorInfoProps, IColorInfoState>{
             </cite>
             <cite>Gray scale:
               <CountUp key="gray" decimals={2}
-                       preserveValue
-                       end={this.props.colorInfo.gray}/></cite>
+                preserveValue
+                end={this.props.colorInfo.gray}/></cite>
             <cite>HSV: {this.renderCountUp(this.props.colorInfo.RGB, 'HSV')}</cite>
             <cite>HEX: {this.props.colorInfo.hex.toLocaleUpperCase()}</cite>
           </StyledInformation>

@@ -2,12 +2,12 @@ module.exports = {
   extends: [
     'alloy',
     'alloy/react',
-    'alloy/typescript',
+    'alloy/typescript'
   ],
   env: {
     // 你的环境变量（包含多个预定义的全局变量）
     //
-    browser: true,
+    // browser: true,
     // node: true,
     // mocha: true,
     // jest: true,
@@ -20,9 +20,9 @@ module.exports = {
   },
   rules: {
     // 自定义你的规则
-    "@typescript-eslint/explicit-member-accessibility": "off",
-    "@typescript-eslint/no-invalid-this": "off",
-    indent: [ 'error', 2, { SwitchCase: 1 } ], // 强制使用一致的缩进
+    '@typescript-eslint/explicit-member-accessibility': 'off',
+    '@typescript-eslint/no-invalid-this': 'off',
+    'indent': [ 'error', 2, { SwitchCase: 1 } ], // 强制使用一致的缩进
     'arrow-spacing': [
       2,
       {
@@ -53,19 +53,12 @@ module.exports = {
     'no-self-compare': 2, // 禁止自身比较
     'no-self-assign': 2, // 禁止自我赋值
     'no-trailing-spaces': 1, // 禁用行尾空格
-    'no-unneeded-ternary': [
-      2,
-      {
-        defaultAssignment: false
-      }
-    ], // 禁止可以在有更简单的可替代的表达式时使用三元操作符
     'no-unreachable': 2, // 禁止在return、throw、continue 和 break 语句之后出现不可达代码
-    curly: [ 2, 'multi-line' ],
-    semi: [ 'error', 'never' ], // 需要和prettier保持一致，防止两者冲突
+    'semi': [ 'error', 'never' ], // 需要和prettier保持一致，防止两者冲突
     'no-extra-semi': 2,
     'array-callback-return': 2,
     'dot-location': [ 2, 'property' ],
-    quotes: [
+    'quotes': [
       2,
       'single',
       {
@@ -83,4 +76,4 @@ module.exports = {
     'prefer-const': 2, // 要求使用 const 声明那些声明后不再被修改的变量
     'no-debugger': 2 // 禁用 debugger
   }
-};
+}

@@ -1,8 +1,8 @@
 import React, {Component} from 'react'
-import styled from "styled-components";
-import ColorList from "./list";
+import styled from 'styled-components'
+import ColorList from './list'
 import ColorInfo from './information'
-import {ColorInfoType} from "../../type";
+import {ColorInfoType} from '../../type'
 import { connect } from 'react-redux'
 import {RouteComponentProps, withRouter} from 'react-router'
 
@@ -51,7 +51,7 @@ class ChineseColors extends Component<IColorsProps, IColorsState>{
           <ColorList />
         </StyledMain>
       </StyledColorsWrapper>
-    );
+    )
   }
 }
 
