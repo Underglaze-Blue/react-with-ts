@@ -158,9 +158,13 @@ class ColorInfo extends PureComponent<IColorInfoProps, IColorInfoState>{
   }
 
   render() {
+    const style = {
+      backgroundColor: this.handleBackgroundColor(this.props.colorInfo.gray - 175, 0.1),
+      boxShadow: `0 0 10px ${this.handleBackgroundColor(175 - this.props.colorInfo.gray, 0.1)}`
+    }
     return(
       <StyledWrapper>
-        <StyledMain style={{backgroundColor: this.handleBackgroundColor(this.props.colorInfo.gray - 175, 0.1), boxShadow: `0 0 10px ${this.handleBackgroundColor(175 - this.props.colorInfo.gray, 0.1)}`}}>
+        <StyledMain style={style}>
           <StyledHSV>
             {this.renderSVG(this.props.colorInfo.CMYK)}
           </StyledHSV>
