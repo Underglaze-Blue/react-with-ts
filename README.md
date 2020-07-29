@@ -1,5 +1,23 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## 重要
+
+1. 使用 `yarn commit` 来进行 `commit` 操作
+2. 添加了 `husky` `lint-staged`
+3. `react` `eslint` 版本过低，导致有一些规则不能生效，目前存在以下规则
+
+    ```js
+        "@typescript-eslint/no-loss-of-precision": 0,
+        "default-case-last": 0,
+        "no-promise-executor-return": 0,
+        "no-unreachable-loop": 0,
+        "no-useless-backreference": 0
+    ```
+    
+4. `husky` 降版本了，高版本不能生效，会报错
+    > `We have nothing pre-commit hooks to run. Either you're missing the scripts`
+5. `lint-staged` 也降版本了，兼容 `husky`
+
 ## 计划
 1. 使用redux实现 -- 已完成
 
