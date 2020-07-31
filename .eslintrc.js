@@ -24,6 +24,7 @@ module.exports = {
     // 自定义你的规则
     '@typescript-eslint/explicit-member-accessibility': 'off',
     '@typescript-eslint/no-invalid-this': 'off',
+    "@typescript-eslint/no-empty-interface": 0,
     "@typescript-eslint/no-loss-of-precision": 0,
     "default-case-last": 0,
     "no-promise-executor-return": 0,

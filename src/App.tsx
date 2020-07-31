@@ -2,12 +2,15 @@ import React, {Component, ComponentClass} from 'react'
 import styled from 'styled-components'
 import {Switch, Router, Route, Redirect} from 'react-router'
 import { createBrowserHistory, History } from 'history'
+
 import IGallery from './pages/gallery'
 import LibraryApp from './pages/library'
 import UserApp from './pages/user'
 import Poetry from './pages/poetry'
 import Menu from './pages/menu'
 import ChineseColors from './pages/chineseColors'
+import CanvasBg from './pages/canvasBackground'
+
 import {fetchBingHPImageArchive} from './api'
 import LocalData from './utils/storage'
 import {LocalStorageType} from './type'
@@ -44,9 +47,7 @@ const StyledBackground = styled.div`
   }
 `
 
-interface IAppProps {
-
-}
+interface IAppProps {}
 interface IAppState {
   history: History,
   bgImage: string
@@ -62,7 +63,7 @@ interface BgImage {
 
 interface RouteTypes {
   path: string
-  component: React.ComponentClass
+  component: ComponentClass
 }
 
 const Routes: Array<RouteTypes> = [
@@ -89,6 +90,10 @@ const Routes: Array<RouteTypes> = [
   {
     path: '/cn-colors',
     component: ChineseColors
+  },
+  {
+    path: '/canvas',
+    component: CanvasBg
   }
 ]
 
@@ -106,7 +111,7 @@ class App extends Component<IAppProps, IAppState> {
   componentDidMount() {
     if (this.storage.get('images') && this.storage.get('images').length) {
       this.setState({
-        bgImage: this.storage.get('images')[parseInt(String(Math.random() * ImageCount))].url
+        bgImage: this.storage.get('images')[parseInt(String(Math.random() * ImageCount), 10)].url
       })
       return
     }
@@ -115,7 +120,7 @@ class App extends Component<IAppProps, IAppState> {
       const period = new Date(new Date().setDate(new Date().getDate() + 1)).setHours(0,0,0,0)
       this.storage.save('images', images, period)
       this.setState({
-        bgImage: images[parseInt(String(Math.random() * ImageCount))].url
+        bgImage: images[parseInt(String(Math.random() * ImageCount), 10)].url
       })
     })
   }

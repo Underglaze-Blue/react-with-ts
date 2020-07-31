@@ -25,10 +25,10 @@ instance.interceptors.request.use(
 
 instance.interceptors.response.use(
   (response: AxiosResponse) => {
-    if (response && response.data) {
+    if (response?.data) {
       return Promise.resolve(response)
     } else {
-      return Promise.reject('response 不存在')
+      return Promise.reject(new Error('response 不存在'))
     }
   },
   (error) => {

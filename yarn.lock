@@ -9001,6 +9001,10 @@ react-app-polyfill@^1.0.6:
     regenerator-runtime "^0.13.3"
     whatwg-fetch "^3.0.0"
 
+react-canvas-nest@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/react-canvas-nest/-/react-canvas-nest-1.1.1.tgz#e53687ad725a2131101276b565b144dde6863015"
+
 react-countup@^4.3.3:
   version "4.3.3"
   resolved "https://registry.yarnpkg.com/react-countup/-/react-countup-4.3.3.tgz#143a8d854d47290b73d6915eac20a12d839153c2"

@@ -43,7 +43,7 @@ class ChannelSwitcher extends Component<IImageInfoProps, IImageInfoState> {
 
   _onValuesChange = (changedValues: StoreValue, allValues: StoreValue) => {
     const { onImageInfoChange } = this.props
-    onImageInfoChange && onImageInfoChange(changedValues, allValues)
+    onImageInfoChange?.(changedValues, allValues)
   }
 
   render() {

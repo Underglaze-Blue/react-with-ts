@@ -38,6 +38,10 @@ const MenuList: Array<MenuItem> = [
   {
     name: 'Chinese Colors',
     path: 'cn-colors'
+  },
+  {
+    name: 'Canvas Background',
+    path: 'canvas'
   }
 
 ]

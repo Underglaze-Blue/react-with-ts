@@ -26,6 +26,7 @@
     "i18next": "^19.6.3",
     "i18next-browser-languagedetector": "^5.0.0",
     "react": "^16.13.1",
+    "react-canvas-nest": "^1.1.1",
     "react-countup": "^4.3.3",
     "react-dom": "^16.13.1",
     "react-i18next": "^11.7.0",
