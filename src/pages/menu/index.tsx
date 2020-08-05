@@ -42,6 +42,10 @@ const MenuList: Array<MenuItem> = [
   {
     name: 'Canvas Background',
     path: 'canvas'
+  },
+  {
+    name: 'Clock',
+    path: 'clock'
   }
 
 ]

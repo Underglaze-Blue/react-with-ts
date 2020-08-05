@@ -52,8 +52,6 @@ class Ribbon extends Component<IRibbonProps, IRibbonState>{
   }
   renderCanvas() {
     const context = (Ribbon.canvas.current as HTMLCanvasElement).getContext('2d') as CanvasRenderingContext2D
-    // context.scale(this.state.pr, this.state.pr)
-    // context.globalAlpha = 0.6
     context.clearRect(0, 0, this.state.width, this.state.height)
     this.setState({
       temp: [{x: 0, y: this.state.height * 0.7 + this.state.size}, {x: 0, y: this.state.height * 0.7 - this.state.size}]

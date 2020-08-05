@@ -10,6 +10,7 @@ import Poetry from './pages/poetry'
 import Menu from './pages/menu'
 import ChineseColors from './pages/chineseColors'
 import CanvasBg from './pages/canvasBackground'
+import Clock from './pages/clock'
 
 import {fetchBingHPImageArchive} from './api'
 import LocalData from './utils/storage'
@@ -94,7 +95,12 @@ const Routes: Array<RouteTypes> = [
   {
     path: '/canvas',
     component: CanvasBg
+  },
+  {
+    path: '/clock',
+    component: Clock
   }
+
 ]
 
 class App extends Component<IAppProps, IAppState> {
