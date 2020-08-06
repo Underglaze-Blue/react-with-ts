@@ -1,5 +1,7 @@
 import React, {Component} from 'react'
 import Ribbon from './components/ribbon'
+import Line from './components/line'
+import CanvasLoading from './components/loading'
 import styled from 'styled-components'
 
 const StyledMain = styled.main`
@@ -20,7 +22,9 @@ class CanvasBg extends Component<ICanvasBgProps, ICanvasBgStates> {
   render() {
     return (
       <StyledMain>
-        <Ribbon />
+        <Line />
+        {/* <CanvasLoading />*/}
+        {/* <Ribbon />*/}
         Canvas Background
       </StyledMain>
     )
