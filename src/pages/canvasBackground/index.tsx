@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import Ribbon from './components/ribbon'
 import Line from './components/line'
 import CanvasLoading from './components/loading'
+import Microscopic from './components/microscopic'
 import Tree from './components/tree'
 import styled from 'styled-components'
 
@@ -23,7 +24,8 @@ class CanvasBg extends Component<ICanvasBgProps, ICanvasBgStates> {
   render() {
     return (
       <StyledMain>
-        <Tree />
+        {/* <Tree />*/}
+        <Microscopic />
         {/* <Line />*/}
         {/* <CanvasLoading />*/}
         {/* <Ribbon />*/}

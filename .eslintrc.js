@@ -38,6 +38,24 @@ module.exports = {
         after: true
       }
     ],
+    "keyword-spacing": [2, {
+      "before": true,
+      "after": true
+    }],
+    "space-unary-ops": [
+      2, {
+        "words": true,
+        "nonwords": false,
+        "overrides": {
+          "new": false,
+          "++": false,
+          "+": true,
+          "-": true,
+          "*": true,
+          "/": true,
+          "%": true,
+        }
+      }],
     'no-console': 0,
     'comma-dangle': [ 'error', 'never' ],
     'comma-style': [ 2, 'last' ],
@@ -82,6 +100,9 @@ module.exports = {
       }
     ], // 强制在注释中 // 或 /* 使用一致的空格
     'prefer-const': 2, // 要求使用 const 声明那些声明后不再被修改的变量
-    'no-debugger': 2 // 禁用 debugger
+    'no-debugger': 2, // 禁用 debugger
+    "array-bracket-spacing": 2,
+    "space-infix-ops": [2, {"int32Hint": false}],
+    "comma-spacing": [2, {"after": true}]
   }
 }
