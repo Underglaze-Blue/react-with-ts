@@ -64,7 +64,8 @@ interface BgImage {
 
 interface RouteTypes {
   path: string
-  component: ComponentClass
+  component: ComponentClass,
+  fuzzy?: boolean
 }
 
 const Routes: Array<RouteTypes> = [
@@ -94,7 +95,8 @@ const Routes: Array<RouteTypes> = [
   },
   {
     path: '/canvas',
-    component: CanvasBg
+    component: CanvasBg,
+    fuzzy: true
   },
   {
     path: '/clock',
@@ -123,7 +125,7 @@ class App extends Component<IAppProps, IAppState> {
     }
     fetchBingHPImageArchive(ImageCount).then(res => {
       const images = (res as PromiseImage).images
-      const period = new Date(new Date().setDate(new Date().getDate() + 1)).setHours(0,0,0,0)
+      const period = new Date(new Date().setDate(new Date().getDate() + 1)).setHours(0, 0, 0, 0)
       this.storage.save('images', images, period)
       this.setState({
         bgImage: images[parseInt(String(Math.random() * ImageCount), 10)].url
@@ -133,7 +135,7 @@ class App extends Component<IAppProps, IAppState> {
 
   _renderRoute = (routes: Array<RouteTypes>): React.ReactNode => {
     return routes.map(item => {
-      return <Route path={item.path} exact component={item.component} key={item.path}/>
+      return <Route path={item.path} exact={!item.fuzzy} component={item.component} key={item.path}/>
     })
   }
 

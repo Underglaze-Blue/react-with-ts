@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import styled from 'styled-components'
 
 interface ICanvasLoadingProps {
 
@@ -7,6 +8,14 @@ interface ICanvasLoadingProps {
 interface ICanvasLoadingState {
 
 }
+
+const StyledWrapper = styled.div`
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
 
 
 class CanvasLoading extends Component<ICanvasLoadingProps, ICanvasLoadingState>{
@@ -31,10 +40,10 @@ class CanvasLoading extends Component<ICanvasLoadingProps, ICanvasLoadingState>{
 
     (function loop() {
       requestAnimationFrame(loop)
-      ctx.clearRect(-width / 2, -height / 2, width, height)
+      ctx.clearRect(- width / 2, - height / 2, width, height)
       ctx.fillStyle = '#fff'
       let angle = tick / 8
-      let radius = -50 + M.sin(tick / 15) * 100
+      let radius = - 50 + M.sin(tick / 15) * 100
       let size
 
       for (let i = 0; i < count; i++) {
@@ -48,7 +57,7 @@ class CanvasLoading extends Component<ICanvasLoadingProps, ICanvasLoadingState>{
         ctx.fill()
 
         ctx.beginPath()
-        ctx.arc(M.cos(angle) * -radius, M.sin(angle) * -radius, size, 0, TWOPI, false)
+        ctx.arc(M.cos(angle) * - radius, M.sin(angle) * - radius, size, 0, TWOPI, false)
         ctx.fillStyle = 'hsl(320, 70%, 50%)'
         ctx.fill()
 
@@ -58,7 +67,7 @@ class CanvasLoading extends Component<ICanvasLoadingProps, ICanvasLoadingState>{
         ctx.fill()
 
         ctx.beginPath()
-        ctx.arc(M.cos(angle + HALFPI) * -radius, M.sin(angle + HALFPI) * -radius, size, 0, TWOPI)
+        ctx.arc(M.cos(angle + HALFPI) * - radius, M.sin(angle + HALFPI) * - radius, size, 0, TWOPI)
         ctx.fillStyle = 'hsl(0, 0%, 100%)'
         ctx.fill()
       }
@@ -73,7 +82,7 @@ class CanvasLoading extends Component<ICanvasLoadingProps, ICanvasLoadingState>{
   }
 
   render() {
-    return <canvas ref={CanvasLoading.canvas} width={350} height={350}/>
+    return <StyledWrapper><canvas ref={CanvasLoading.canvas} width={350} height={350}/></StyledWrapper>
   }
 }
 
