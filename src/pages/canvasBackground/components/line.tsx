@@ -79,7 +79,7 @@ class Line extends Component<ILineProps, ILineState>{
     const cx = this.state.di * 0.5
     const cy = this.state.di * 0.5
 
-    const items = 5
+    const items = 6
     const vectors: Array<Vector> = []
     for (let i = 0; i < items; i++) {
       vectors.push(new Vector( cx, cy, i % 2 === 0))

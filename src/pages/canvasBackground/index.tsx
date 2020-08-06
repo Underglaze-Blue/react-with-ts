@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import Ribbon from './components/ribbon'
 import Line from './components/line'
 import CanvasLoading from './components/loading'
+import Tree from './components/tree'
 import styled from 'styled-components'
 
 const StyledMain = styled.main`
@@ -22,7 +23,8 @@ class CanvasBg extends Component<ICanvasBgProps, ICanvasBgStates> {
   render() {
     return (
       <StyledMain>
-        <Line />
+        <Tree />
+        {/* <Line />*/}
         {/* <CanvasLoading />*/}
         {/* <Ribbon />*/}
         Canvas Background
