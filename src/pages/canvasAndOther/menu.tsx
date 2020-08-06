@@ -48,7 +48,14 @@ const MenuList: Array<MenuItem> = [
     path: 'tree',
     // eslint-disable-next-line @typescript-eslint/no-require-imports
     pic: require('./image/tree.gif')
+  },
+  {
+    name: 'Clock',
+    path: 'clock',
+    // eslint-disable-next-line @typescript-eslint/no-require-imports
+    pic: require('./image/clock.png')
   }
+
 ]
 
 const StyleMenuWrapper = styled.ul`

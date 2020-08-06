@@ -40,14 +40,9 @@ const MenuList: Array<MenuItem> = [
     path: 'cn-colors'
   },
   {
-    name: 'Canvas Background',
-    path: 'canvas'
-  },
-  {
-    name: 'Clock',
-    path: 'clock'
+    name: 'Canvas \n&\n Others',
+    path: 'other'
   }
-
 ]
 
 const StyledMain = styled.main`
@@ -71,6 +66,7 @@ const StyledUl = styled.ul`
 
 const StyledLi = styled.li`
   height: 30vh;
+  white-space: pre-line;
   flex: 1;
   width: 20vh;
   margin: 2vmin;

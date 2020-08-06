@@ -67,6 +67,7 @@ class CircleSVG extends PureComponent<ICircleProps, ICircleState>{
   }
 
   componentDidUpdate() {
+    // eslint-disable-next-line react/no-did-update-set-state
     this.setState({
       strokeDashoffset: this.state.perimeter - this.props.percent / 100 * this.state.perimeter
     })

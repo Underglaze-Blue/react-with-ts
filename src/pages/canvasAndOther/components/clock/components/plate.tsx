@@ -63,12 +63,12 @@ class Plate extends Component<IPlateProps, IPlateState> {
     const rotateDegree = _360DEGREE / array.length
 
     if (array.length === 7) {// WEEKS
-      for (let i = 1; i <= 11; i++) array.push('')// for circle purpose
+      for (let i = 1; i <= 3; i++) array.push('')// 补齐偶数圆，不在12，24
     } else if (array.length % 2 != 0) {
       array.push('')
-    }// for symmetry purpose
+    }
 
-    let rotate = array.length === 12 ?
+    let rotate = [12, 24].includes(array.length) ?
       this.props.currentTime * rotateDegree :
       this.props.currentTime * rotateDegree - rotateDegree
 
@@ -77,21 +77,21 @@ class Plate extends Component<IPlateProps, IPlateState> {
     for (let i = 0;i < halfLength;i++) {
       let htmlStr
       if (rotate === 0) {
-        htmlStr =(
+        htmlStr = (
           <>
             <StyledPoint className="point-right rooter" key={`${array[i]} ${i}`}>{array[i]}</StyledPoint>
             <StyledPoint className="point-left" key={array[i + halfLength]}>{array[i + halfLength]}</StyledPoint>
           </>
         )
-      } else if (rotate === _360DEGREE / 2) {
-        htmlStr =(
+      } else if (Math.abs(rotate) === _360DEGREE / 2) {
+        htmlStr = (
           <>
             <StyledPoint className="point-right" key={`${array[i]} ${i}`}>{array[i]}</StyledPoint>
             <StyledPoint className="point-left rooter" key={array[i + halfLength]}>{array[i + halfLength]}</StyledPoint>
           </>
         )
       } else {
-        htmlStr =(
+        htmlStr = (
           <>
             <StyledPoint className="point-right" key={`${array[i]} ${i}`}>{array[i]}</StyledPoint>
             <StyledPoint className="point-left" key={array[i + halfLength]}>{array[i + halfLength]}</StyledPoint>
@@ -115,7 +115,7 @@ class Plate extends Component<IPlateProps, IPlateState> {
   render() {
     return (
       <StyledPointsWrapper>
-        <StyledPlate style={{width: this.props.size+'px',height: this.props.size+'px'}}>
+        <StyledPlate style={{width: this.props.size + 'px', height: this.props.size + 'px'}}>
           {this.renderPlate()}
         </StyledPlate>
       </StyledPointsWrapper>

@@ -1,4 +1,4 @@
-import React,{Component} from 'react'
+import React, {Component} from 'react'
 import Plate from './components/plate'
 
 import {DAYS, HOURS, MINS, MONTHS, SECS, WEEKS} from './utils/date'
@@ -21,27 +21,24 @@ class Clock extends Component<IClockProps, IClockState> {
     this.timerID = 0
   }
   componentDidMount() {
-    this.timerID = setInterval(
-      () => this.tick(),
-      1000
-    )
+    this.tick()
   }
   componentWillUnmount() {
-    clearInterval(this.timerID)
+    cancelAnimationFrame(this.timerID)
   }
   tick() {
     this.setState({
       date: new Date()
     })
+    this.timerID = requestAnimationFrame(() => {this.tick()})
   }
   render() {
-    // const whatWeek = Math.ceil((21 + 1) / WEEKS.length)
 
     return (
       <>
-        <Plate array={MONTHS} size={170} currentTime={this.state.date.getMonth()} />
-        <Plate array={WEEKS} size={330} currentTime={this.state.date.getDay()} />
-        <Plate array={DAYS} size={460} currentTime={this.state.date.getDate()} />
+        <Plate array={WEEKS} size={200} currentTime={this.state.date.getDay()} />
+        <Plate array={MONTHS} size={320} currentTime={this.state.date.getMonth()} />
+        <Plate array={DAYS} size={440} currentTime={this.state.date.getDate()} />
         <Plate array={HOURS} size={560} currentTime={this.state.date.getHours()} />
         <Plate array={MINS} size={680} currentTime={this.state.date.getMinutes()} />
         <Plate array={SECS} size={800} currentTime={this.state.date.getSeconds()} />

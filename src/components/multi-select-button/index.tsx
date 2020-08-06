@@ -40,7 +40,7 @@ class MultipleSelectButton extends React.Component<IDelayProps, IDelayState>{
     const { selected } = this.state
     const { onChange } = this.props
     const index = selected.indexOf(value)
-    const temp = index === -1
+    const temp = index === - 1
       ? selected.concat(value)
       : selected.slice(0, index).concat(selected.slice(index + 1, selected.length))
     this.setState({

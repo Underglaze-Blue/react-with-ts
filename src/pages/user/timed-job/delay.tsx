@@ -50,7 +50,7 @@ class Delay extends React.Component<IDelayProps, IDelayState>{
       }, {
         name: '星期五',
         value: 'Friday'
-      },{
+      }, {
         name: '星期六',
         value: 'Saturday'
       }]

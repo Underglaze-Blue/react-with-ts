@@ -162,7 +162,7 @@ class ColorInfo extends PureComponent<IColorInfoProps, IColorInfoState>{
       backgroundColor: this.handleBackgroundColor(this.props.colorInfo.gray - 175, 0.1),
       boxShadow: `0 0 10px ${this.handleBackgroundColor(175 - this.props.colorInfo.gray, 0.1)}`
     }
-    return(
+    return (
       <StyledWrapper>
         <StyledMain style={style}>
           <StyledHSV>

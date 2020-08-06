@@ -1,4 +1,4 @@
-import React,{Component} from 'react'
+import React, {Component} from 'react'
 import styled from 'styled-components'
 
 interface ILineProps {
@@ -24,8 +24,8 @@ class Vector {
     this.cx = cx
     this.cy = cy
     const radians = Math.PI / 180 * (Math.random() * 10 + 1)
-    this.cos = Math.cos(reverse ? radians * -1 : radians)
-    this.sin = Math.sin(reverse ? radians * -1 : radians)
+    this.cos = Math.cos(reverse ? radians * - 1 : radians)
+    this.sin = Math.sin(reverse ? radians * - 1 : radians)
   }
 
   tick() {
@@ -99,7 +99,7 @@ class Line extends Component<ILineProps, ILineState>{
       vectors.forEach((item, index) => {
         if (index === 0) {
           canvas.moveTo(item.x, item.y)
-        }else {
+        } else {
           canvas.quadraticCurveTo(vectors[ index - 1].x,
             vectors[index - 1].y, item.x, item.y)
         }

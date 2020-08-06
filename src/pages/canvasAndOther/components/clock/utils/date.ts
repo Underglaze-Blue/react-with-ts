@@ -1,17 +1,17 @@
 
-function generateArray(length: number, suffix: string, prefix = '') {
-  return Array.from({length}, (v, k) => `${prefix} ${k + 1} ${suffix}`)
+function generateArray(length: number, suffix: string, plus = true) {
+  return Array.from({length}, (v, k) => `${k + (plus ? 1 : 0)} ${suffix}`)
 }
 
 export const _360DEGREE = 360
 
 const MONTHS = generateArray(12, '月')
 
-const WEEKS = generateArray(7, '', '周')
+const WEEKS = generateArray(7, '')
 
 const DAYS = generateArray(31, '号')
 
-const HOURS = generateArray(24, '时')
+const HOURS = generateArray(24, '时', false)
 
 const MINS = generateArray(60, '分')
 

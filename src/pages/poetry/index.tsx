@@ -68,7 +68,7 @@ class Poetry extends Component<IPoetryProps, IPoetryState> {
     })
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this._fetchPoetry()
   }
 

@@ -99,7 +99,7 @@ class Branch {
     context.beginPath()
     context.moveTo(this.x, this.y)
     // 图形是依靠在各个坐标处画出的圆形组合而成
-    context.arc(this.x, this.y, this.radius, 0, 2*Math.PI, true)
+    context.arc(this.x, this.y, this.radius, 0, 2 * Math.PI, true)
     context.closePath()
     context.fill()
     context.restore()
@@ -116,7 +116,7 @@ class Branch {
     this.radius *= (0.99 - this.generation / 250)
 
     // 求出距离的增量
-    const deltaDistance = Math.sqrt(Math.pow(deltaX,2) + Math.pow(deltaY,2))
+    const deltaDistance = Math.sqrt(Math.pow(deltaX, 2) + Math.pow(deltaY, 2))
 
     // distance指的是当前的这一段树枝的长度
     this.distance += deltaDistance
@@ -127,7 +127,7 @@ class Branch {
     }
 
     // 产生一个范围在（-0.1, 0.1)之间的随机数,对角度进行一个偏转
-    this.angle += Math.random()/5 - 1/5/2
+    this.angle += Math.random() / 5 - 1 / 5 / 2
   }
 
   split () {
@@ -149,7 +149,7 @@ class Branch {
         branch.angle = this.angle
         branch.radius = this.radius * 0.9
         branch.generation++
-        branch.fillStyle =this.fillStyle
+        branch.fillStyle = this.fillStyle
 
         // 将branch加入到集合中去
         this.branches.add(branch)

@@ -85,7 +85,7 @@ class ImageMask extends Component<IImageProps, IImageState> {
     img.height = this.props.height
     img.src = this.props.img
     // eslint-disable-next-line @typescript-eslint/no-require-imports
-    imgMask.src = require('../image/cloud-texture.png')
+    imgMask.src = require('../image/smoke.png')
     img.onload = () => {
       setTimeout(() => {
         this.draw(canvas, img, imgMask)

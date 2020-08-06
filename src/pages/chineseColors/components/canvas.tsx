@@ -46,9 +46,9 @@ class ICanvas extends Component<ICanvasProps, ICanvasState> {
 
     // cmyk环渲染
     this.props.cmyk.forEach((item, index) => {
-      const endAngle = item === 0 ? (1.5 * Math.PI) : item === 100 ? (2 * Math.PI) : ((-90 + (360 * item / 100)) * (Math.PI / 180))
+      const endAngle = item === 0 ? (1.5 * Math.PI) : item === 100 ? (2 * Math.PI) : ((- 90 + (360 * item / 100)) * (Math.PI / 180))
       context.beginPath()
-      context.arc(x * index + 25,y * 2,20,item === 100 ? 0 : 1.5 * Math.PI, endAngle)
+      context.arc(x * index + 25, y * 2, 20, item === 100 ? 0 : 1.5 * Math.PI, endAngle)
       context.fillText(CMYKText[index], x * index + 25, y * 3 - 5)
       context.strokeStyle = CMYKColor[index]
       // context.strokeStyle = 'rgba(54,52,51,.1)';
@@ -59,7 +59,7 @@ class ICanvas extends Component<ICanvasProps, ICanvasState> {
     this.props.rgb.forEach((item, index) => {
       const coefficient = 350 - lineX // 线条系数
       const lineToX = (lineX + coefficient * (item / 255))
-      const yCoordinate= y * (index + 1) + 2 * index
+      const yCoordinate = y * (index + 1) + 2 * index
       context.beginPath()
       context.strokeStyle = RGBColor[index]
       context.moveTo(lineX, yCoordinate)
@@ -73,7 +73,7 @@ class ICanvas extends Component<ICanvasProps, ICanvasState> {
   render() {
     return (
       <StyledDiv>
-        <img alt='bg' src={require('../images/bg.png')}/>
+        <img alt='bg' src='../images/bg.png'/>
         <canvas ref={ICanvas.canvas} width={350} height={60} />
       </StyledDiv>
     )

@@ -30,6 +30,11 @@ const StyledButton = styled(Button)`
 `
 
 class Create extends Component<IHelloProps, IHelloState> {
+
+  static defaultProps = {
+    message: 'defaultMessage'
+  }
+
   constructor(props: IHelloProps) {
     super(props)
     this.state = {
@@ -37,9 +42,7 @@ class Create extends Component<IHelloProps, IHelloState> {
       loading: false
     }
   }
-  static defaultProps = {
-    message: 'defaultMessage'
-  }
+
   handleChange = (e: FormEvent<HTMLInputElement>) => {
     this.setState({
       message: (e.target as HTMLInputElement).value

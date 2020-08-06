@@ -46,14 +46,14 @@ class LocalData implements LocalStorageType{
   get (name: string) {
     if (!this.isNotExist(localStorage.getItem(name))) return localStorage.getItem(name)
     const dataJSON = localStorage.getItem(`${name}__with__timeliness__`)
-    if(this.isNotExist(dataJSON)) {
+    if (this.isNotExist(dataJSON)) {
       return null
     }
     const storageData = JSON.parse(dataJSON as string)
-    if(this.isNotExist(storageData['__period__'])) {
+    if (this.isNotExist(storageData['__period__'])) {
       return storageData.data
     }
-    if(this.isOutPeriod(storageData)) {
+    if (this.isOutPeriod(storageData)) {
       this.remove(`${name}__with__timeliness__`)
       storageData.data = null
     }

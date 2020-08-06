@@ -4,7 +4,8 @@ import Line from './components/line'
 import CanvasLoading from './components/loading'
 import Microscopic from './components/microscopic'
 import Tree from './components/tree'
-import {Switch, Router, Route, Redirect} from 'react-router'
+import Clock from './components/clock'
+import {Switch, Route, Redirect} from 'react-router'
 
 import Menu from './menu'
 import styled from 'styled-components'
@@ -24,28 +25,32 @@ interface RouteTypes {
 
 const Routes: Array<RouteTypes> = [
   {
-    path: '/canvas/menu',
+    path: '/other/menu',
     component: Menu
   },
   {
-    path: '/canvas/line',
+    path: '/other/line',
     component: Line
   },
   {
-    path: '/canvas/ribbon',
+    path: '/other/ribbon',
     component: Ribbon
   },
   {
-    path: '/canvas/loading',
+    path: '/other/loading',
     component: CanvasLoading
   },
   {
-    path: '/canvas/microscopic',
+    path: '/other/microscopic',
     component: Microscopic
   },
   {
-    path: '/canvas/tree',
+    path: '/other/tree',
     component: Tree
+  },
+  {
+    path: '/other/clock',
+    component: Clock
   }
 ]
 
@@ -55,7 +60,7 @@ const StyledMain = styled.main`
 `
 
 
-class CanvasBg extends Component<ICanvasBgProps, ICanvasBgStates> {
+class Other extends Component<ICanvasBgProps, ICanvasBgStates> {
   static canvas = React.createRef<HTMLCanvasElement>()
 
   _renderRoute = (routes: Array<RouteTypes>): React.ReactNode => {
@@ -69,11 +74,11 @@ class CanvasBg extends Component<ICanvasBgProps, ICanvasBgStates> {
       <StyledMain>
         <Switch>
           {this._renderRoute(Routes)}
-          <Redirect exact from="/canvas" to="/canvas/menu" />
+          <Redirect exact from="/other" to="/other/menu" />
         </Switch>
       </StyledMain>
     )
   }
 }
 
-export default CanvasBg
+export default Other

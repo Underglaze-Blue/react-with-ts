@@ -25,7 +25,7 @@ export const rgb2hsv = (rgb: TupleColor<number, 3>) :TupleColor<number, 3> => {
   if (max === min) {
     h = 0
   } else {
-    switch(max){
+    switch (max){
       case r: h = (g - b) / difference + ( g < b ? 6 : 0 ); break
       case g: h = 2.0 + (b - r) / difference; break
       case b: h = 4.0 + (r - g) / difference; break

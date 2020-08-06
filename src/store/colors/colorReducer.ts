@@ -7,8 +7,8 @@ export interface ColorOperationAction{
 }
 
 const defaultState: ColorInfoType = {
-  CMYK: [4,5,18,0],
-  RGB: [249,244,220],
+  CMYK: [4, 5, 18, 0],
+  RGB: [249, 244, 220],
   hex: '#f9f4dc',
   name: '乳白',
   pinyin: 'rubai',
@@ -18,7 +18,9 @@ const defaultState: ColorInfoType = {
 const colorStore = (state: ColorInfoType = defaultState, action: ColorOperationAction): ColorInfoType => {
   switch (action.type) {
     case COLORS_OPERATION.SET_COLOR :
+      // eslint-disable-next-line no-case-declarations
       const {...arg} = action.info
+      // eslint-disable-next-line no-param-reassign
       state = arg
       // Object.keys(state).forEach((key) => {
       //   state[key] = action.info[key]

@@ -9,8 +9,7 @@ import UserApp from './pages/user'
 import Poetry from './pages/poetry'
 import Menu from './pages/menu'
 import ChineseColors from './pages/chineseColors'
-import CanvasBg from './pages/canvasBackground'
-import Clock from './pages/clock'
+import Other from './pages/canvasAndOther'
 
 import {fetchBingHPImageArchive} from './api'
 import LocalData from './utils/storage'
@@ -94,13 +93,9 @@ const Routes: Array<RouteTypes> = [
     component: ChineseColors
   },
   {
-    path: '/canvas',
-    component: CanvasBg,
+    path: '/other',
+    component: Other,
     fuzzy: true
-  },
-  {
-    path: '/clock',
-    component: Clock
   }
 
 ]
