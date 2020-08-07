@@ -168,8 +168,8 @@ class App extends Component<IAppProps, IAppState> {
     }
     return (
       <Router history={history}>
-        <StyledApp onClick={() => {this.backgroundRandom()}}>
-          <StyledBackground style={styleApp}/>
+        <StyledApp>
+          <StyledBackground style={styleApp} onClick={() => {this.backgroundRandom()}}/>
           <Switch>
             {this._renderRoute(Routes)}
             <Redirect exact from="/" to="menu" />

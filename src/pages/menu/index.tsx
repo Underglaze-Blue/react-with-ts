@@ -65,6 +65,7 @@ const StyledUl = styled.ul`
 `
 
 const StyledLi = styled.li`
+  opacity: 0.85;
   height: 30vh;
   white-space: pre-line;
   flex: 1;

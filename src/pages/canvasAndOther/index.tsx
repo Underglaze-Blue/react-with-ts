@@ -9,6 +9,7 @@ import {Switch, Route, Redirect} from 'react-router'
 
 import Menu from './menu'
 import styled from 'styled-components'
+import Trello from './components/trello'
 
 interface ICanvasBgProps {
 
@@ -51,6 +52,10 @@ const Routes: Array<RouteTypes> = [
   {
     path: '/other/clock',
     component: Clock
+  },
+  {
+    path: '/other/trello',
+    component: Trello
   }
 ]
 

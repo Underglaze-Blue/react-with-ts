@@ -54,7 +54,14 @@ const MenuList: Array<MenuItem> = [
     path: 'clock',
     // eslint-disable-next-line @typescript-eslint/no-require-imports
     pic: require('./image/clock.png')
+  },
+  {
+    name: 'Trello',
+    path: 'trello',
+    // eslint-disable-next-line @typescript-eslint/no-require-imports
+    pic: require('./image/trello.png')
   }
+
 
 ]
 
