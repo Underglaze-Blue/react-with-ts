@@ -137,7 +137,9 @@ class App extends Component<IAppProps, IAppState> {
         })
       })
     })
-
+    setInterval(() => {
+      this.randomBackgroundImage()
+    }, 1000 * 30)
   }
 
   _renderRoute = (routes: Array<RouteTypes>): React.ReactNode => {
