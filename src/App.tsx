@@ -15,6 +15,8 @@ import {fetchBingHPImageArchive} from './api'
 import LocalData from './utils/storage'
 import {LocalStorageType} from './type'
 
+import { debounce } from 'lodash'
+
 const ImageCount = 8
 
 const StyledApp = styled.div`
@@ -35,6 +37,7 @@ const StyledBackground = styled.div`
   z-index: -1;
   filter: blur(2px);
   -webkit-filter: blur(2px);
+  transition: background-image 0.5s;
   &::before{
     position: absolute;
     top: 0;
@@ -50,7 +53,8 @@ const StyledBackground = styled.div`
 interface IAppProps {}
 interface IAppState {
   history: History,
-  bgImage: string
+  bgImage: string,
+  index: number
 }
 
 interface PromiseImage {
@@ -101,36 +105,59 @@ const Routes: Array<RouteTypes> = [
 ]
 
 class App extends Component<IAppProps, IAppState> {
+  backgroundRandom: Function
   storage: LocalStorageType
   constructor(props: IAppProps) {
     super(props)
     this.state = {
       history: createBrowserHistory(),
-      bgImage: ''
+      bgImage: '',
+      index: 0
     }
     this.storage = new LocalData()
+    this.backgroundRandom = debounce(this.randomBackgroundImage, 500)
   }
 
   componentDidMount() {
-    if (this.storage.get('images') && this.storage.get('images').length) {
-      this.setState({
-        bgImage: this.storage.get('images')[parseInt(String(Math.random() * ImageCount), 10)].url
-      })
-      return
-    }
-    fetchBingHPImageArchive(ImageCount).then(res => {
-      const images = (res as PromiseImage).images
-      const period = new Date(new Date().setDate(new Date().getDate() + 1)).setHours(0, 0, 0, 0)
-      this.storage.save('images', images, period)
-      this.setState({
-        bgImage: images[parseInt(String(Math.random() * ImageCount), 10)].url
+    this.setState({
+      index: this.randomIndex()
+    }, () => {
+      if (this.storage.get('images') && this.storage.get('images').length) {
+        this.setState({
+          bgImage: this.storage.get('images')[this.state.index].url
+        })
+        return
+      }
+      fetchBingHPImageArchive(ImageCount).then(res => {
+        const images = (res as PromiseImage).images
+        const period = new Date(new Date().setDate(new Date().getDate() + 1)).setHours(0, 0, 0, 0)
+        this.storage.save('images', images, period)
+        this.setState({
+          bgImage: images[this.state.index].url
+        })
       })
     })
+
   }
 
   _renderRoute = (routes: Array<RouteTypes>): React.ReactNode => {
     return routes.map(item => {
       return <Route path={item.path} exact={!item.fuzzy} component={item.component} key={item.path}/>
+    })
+  }
+
+  randomIndex(): number {
+    return parseInt(String(Math.random() * ImageCount), 10)
+  }
+
+  randomBackgroundImage() {
+    let index = this.randomIndex()
+    while (index === this.state.index) {
+      index = this.randomIndex()
+    }
+    this.setState({
+      index,
+      bgImage: this.storage.get('images')[index].url
     })
   }
 
@@ -141,7 +168,7 @@ class App extends Component<IAppProps, IAppState> {
     }
     return (
       <Router history={history}>
-        <StyledApp >
+        <StyledApp onClick={() => {this.backgroundRandom()}}>
           <StyledBackground style={styleApp}/>
           <Switch>
             {this._renderRoute(Routes)}
