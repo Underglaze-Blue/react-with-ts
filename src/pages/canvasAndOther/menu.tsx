@@ -60,9 +60,15 @@ const MenuList: Array<MenuItem> = [
     path: 'trello',
     // eslint-disable-next-line @typescript-eslint/no-require-imports
     pic: require('./image/trello.png')
+  },
+  {
+    name: 'Particle',
+    path: 'particle'
+  },
+  {
+    name: 'Loading-Dark',
+    path: 'loading-dark'
   }
-
-
 ]
 
 const StyleMenuWrapper = styled.ul`

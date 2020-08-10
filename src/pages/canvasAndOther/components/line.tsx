@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import styled from 'styled-components'
+import {randomNum} from '../../../utils/random'
 
 interface ILineProps {
 
@@ -79,7 +80,7 @@ class Line extends Component<ILineProps, ILineState>{
     const cx = this.state.di * 0.5
     const cy = this.state.di * 0.5
 
-    const items = 6
+    const items = randomNum(3, 8)
     const vectors: Array<Vector> = []
     for (let i = 0; i < items; i++) {
       vectors.push(new Vector( cx, cy, i % 2 === 0))

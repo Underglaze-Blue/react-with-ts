@@ -5,6 +5,8 @@ import CanvasLoading from './components/loading'
 import Microscopic from './components/microscopic'
 import Tree from './components/tree'
 import Clock from './components/clock'
+import Particle from './components/particle'
+import LoadingDark from '../../components/loading-dark'
 import {Switch, Route, Redirect} from 'react-router'
 
 import Menu from './menu'
@@ -56,12 +58,20 @@ const Routes: Array<RouteTypes> = [
   {
     path: '/other/trello',
     component: Trello
+  },
+  {
+    path: '/other/particle',
+    component: Particle
+  },
+  {
+    path: '/other/loading-dark',
+    component: LoadingDark
   }
 ]
 
 const StyledMain = styled.main`
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
 `
 
 

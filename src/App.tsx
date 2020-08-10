@@ -31,7 +31,7 @@ const StyledApp = styled.div`
 `
 
 const StyledBackground = styled.div`
-  position: absolute;
+  position: fixed;
   width: 100vw;
   height: 100vh;
   z-index: -1;
@@ -130,7 +130,7 @@ class App extends Component<IAppProps, IAppState> {
       }
       fetchBingHPImageArchive(ImageCount).then(res => {
         const images = (res as PromiseImage).images
-        const period = new Date(new Date().setDate(new Date().getDate() + 1)).setHours(0, 0, 0, 0)
+        const period = new Date(new Date(new Date().setDate(new Date().getDate() + 1)).setHours(0, 0, 0, 0))
         this.storage.save('images', images, period)
         this.setState({
           bgImage: images[this.state.index].url
