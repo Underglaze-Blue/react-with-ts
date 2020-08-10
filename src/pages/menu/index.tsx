@@ -65,6 +65,8 @@ const StyledUl = styled.ul`
 `
 
 const StyledLi = styled.li`
+  -webkit-box-reflect: below 0 -webkit-linear-gradient(transparent,transparent,rgba(255,255,255,.3));
+  box-sizing: border-box;
   opacity: 0.85;
   height: 30vh;
   white-space: pre-line;

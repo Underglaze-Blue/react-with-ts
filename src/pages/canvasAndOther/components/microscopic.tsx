@@ -61,9 +61,9 @@ class Particle{
   height: number
 
   constructor(content: CanvasRenderingContext2D) {
-    const h = parseInt('360', 10)
-    const s = parseInt(String(55 * Math.random() + 50), 10)
-    const l = parseInt(String(25 * Math.random() + 50), 10)
+    const h = 360
+    const s = 55 * Math.random() + 50 >> 0
+    const l = 55 * Math.random() + 50 >> 0
     const a = 0.5 * Math.random()
     this.width = window.innerWidth
     this.height = window.innerHeight

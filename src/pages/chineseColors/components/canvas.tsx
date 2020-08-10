@@ -73,7 +73,8 @@ class ICanvas extends Component<ICanvasProps, ICanvasState> {
   render() {
     return (
       <StyledDiv>
-        <img alt='bg' src='../images/bg.png'/>
+        {/* eslint-disable-next-line @typescript-eslint/no-require-imports */}
+        <img alt='bg' src={require('../images/bg.png')}/>
         <canvas ref={ICanvas.canvas} width={350} height={60} />
       </StyledDiv>
     )

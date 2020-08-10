@@ -3,7 +3,7 @@ import {Colors} from '../../type'
 // 随机下标
 const randomColorsIndex = (str: string, length: number): number => {
   const charCode = str.charCodeAt(0)
-  const random = parseInt(String(Math.random() * (length / charCode)), 10)
+  const random = Math.random() * (length / charCode) >> 0
   const result = charCode % length + random * charCode
   return result > length ? Math.abs(length - result) : result
 }

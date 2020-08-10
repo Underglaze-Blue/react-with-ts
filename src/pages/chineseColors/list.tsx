@@ -4,7 +4,7 @@ import {Colors, ColorInfoType} from '../../type'
 import {colorsSort} from './utils'
 import ICanvas from './components/canvas'
 import styled from 'styled-components'
-import Loading from '../../components/loading'
+import LoadingDark from '../../components/loading-dark'
 import {connect} from 'react-redux'
 import actions from '../../store/colors/actionCreators'
 
@@ -113,7 +113,7 @@ class ColorList extends Component<IColorsProps, IColorsState>{
       //   return [''].concat(item.name.split(''))
       // })))).join(''))
       // 随机渲染一个颜色
-      const index = parseInt(String(Math.random() * tempColors.length), 10)
+      const index = Math.random() * tempColors.length >> 0
       const [r, g, b] = tempColors[index].RGB
       this.setState({
         colors: tempColors,
@@ -186,7 +186,7 @@ class ColorList extends Component<IColorsProps, IColorsState>{
 
   render() {
     return (
-      this.state.loading ? <Loading/> :
+      this.state.loading ? <LoadingDark/> :
         <StyledWrapper style={this.handleStyle(0.1)}>
           <ul>
             {this._renderColors(this.state.colors)}

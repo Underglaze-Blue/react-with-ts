@@ -19,13 +19,14 @@ const colorStore = (state: ColorInfoType = defaultState, action: ColorOperationA
   switch (action.type) {
     case COLORS_OPERATION.SET_COLOR :
       // eslint-disable-next-line no-case-declarations
-      // const {...arg} = action.info
+      const {...arg} = action.info
+      console.log(action.info)
+      console.log(arg)
       // eslint-disable-next-line no-param-reassign
-      // state = arg
-
-      Object.keys(state).forEach(key => {
-        (state as any)[key] = (action.info as any)[key]
-      })
+      state = arg
+      // Object.keys(state).forEach(key => {
+      //   (state as any)[key] = (action.info as any)[key]
+      // })
       break
     default :
       return state

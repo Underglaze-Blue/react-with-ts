@@ -149,7 +149,7 @@ class App extends Component<IAppProps, IAppState> {
   }
 
   randomIndex(): number {
-    return parseInt(String(Math.random() * ImageCount), 10)
+    return Math.random() * ImageCount >> 0
   }
 
   randomBackgroundImage() {
