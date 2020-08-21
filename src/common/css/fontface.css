@@ -7,7 +7,7 @@
     font-style: normal;
 }
 
-@font-face {font-family: 'yuweif2229ad0221222ab';src: url('//cdn.repository.webfont.com/webfonts/nomal/139947/46953/5f1bc79cf629d8139003612b.gif?r=144049693162');src: url('//cdn.repository.webfont.com/webfonts/nomal/139947/46953/5f1bc79cf629d8139003612b.gif?r=144049693162?#iefix') format('embedded-opentype'),url('//cdn.repository.webfont.com/webfonts/nomal/139947/46953/5f1bc79cf629d8139003612b.png?r=144049693162') format('woff2'),url('//cdn.repository.webfont.com/webfonts/nomal/139947/46953/5f1bc79cf629d8139003612b.bmp?r=144049693162') format('woff'),url('//cdn.repository.webfont.com/webfonts/nomal/139947/46953/5f1bc79cf629d8139003612b.jpg?r=144049693162') format('truetype');font-weight: normal;font-style: normal;}.css2229ad0221222ab{font-family: 'yuweif2229ad0221222ab';}
+@font-face {font-family: 'yuweif2229ad0221222ab';src: url('../font-yuwei/5f3f854ef629d83100124e0c.gif');src: url('../font-yuwei/5f3f854ef629d83100124e0c.gif') format('embedded-opentype'),url('../font-yuwei/5f3f854ef629d83100124e0c.png') format('woff2'),url('../font-yuwei/5f3f854ef629d83100124e0c.bmp') format('woff'),url('../font-yuwei/5f3f854ef629d83100124e0c.jpg') format('truetype');font-weight: normal;font-style: normal;}.css2229ad0221222ab{font-family: 'yuweif2229ad0221222ab';}
 
 @font-face {
     font-family: 'Lauliya';

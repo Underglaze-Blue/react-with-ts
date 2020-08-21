@@ -109,7 +109,8 @@ class Particle extends Component<IParticleProps, IParticleState>{
     const imageData = ctx.getImageData(0, 0, this.width, this.height).data
     const context = (Particle.canvas.current as HTMLCanvasElement).getContext('2d') as CanvasRenderingContext2D
     const particles = []
-    const color = '#' + ('00000' + (Math.random() * 0x1000000 << 0).toString(16)).substr(- 6)
+    const color = `#${(~~(Math.random() * (1 << 24))).toString(16)}`
+    // const color = '#' + ('00000' + (Math.random() * 0x1000000 << 0).toString(16)).substr(- 6)
     for (let x = 0; x < this.width; x += 4) {
       for (let y = 0; y < this.height; y += 4) {
         const fontIndex = (x + y * this.width) * 4 + 3

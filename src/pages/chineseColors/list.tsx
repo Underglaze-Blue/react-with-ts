@@ -109,9 +109,9 @@ class ColorList extends Component<IColorsProps, IColorsState>{
     fetchColors().then(res => {
       const tempColors = colorsSort(res as Array<Colors>)
       // 返回所有颜色包含的汉字
-      // console.log(Array.from(new Set([''].concat(...tempColors.map(item => {
-      //   return [''].concat(item.name.split(''))
-      // })))).join(''))
+      console.log(Array.from(new Set([''].concat(...tempColors.map(item => {
+        return [''].concat(item.name.split(''))
+      })))).join(''))
       // 随机渲染一个颜色
       const index = Math.random() * tempColors.length >> 0
       const [r, g, b] = tempColors[index].RGB
