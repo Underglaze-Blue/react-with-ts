@@ -72,7 +72,7 @@ const StyledHSV = styled.section`
 
 const StyledInfo = styled.section`
   box-sizing: border-box;
-  height: 650px;
+  height: 620px;
   padding: 20px 5px 0;
   display: flex;
   flex-direction: column;

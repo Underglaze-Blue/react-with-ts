@@ -32,6 +32,7 @@ const StyledWrapper = styled.div`
     height: 78vh;
     width: 100%;
     overflow-y: auto;
+    overflow-x: hidden;
     display: grid;
     grid-template-columns: repeat(auto-fill, calc(350px + 2vh));
     grid-gap: 10px;
